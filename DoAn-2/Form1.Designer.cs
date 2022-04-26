@@ -75,7 +75,7 @@
             this.txbUserName.Size = new System.Drawing.Size(179, 19);
             this.txbUserName.TabIndex = 1;
             this.txbUserName.TabStop = false;
-            this.txbUserName.Text = "quantrivien";
+            this.txbUserName.Text = "thungan";
             this.txbUserName.Click += new System.EventHandler(this.txtuser_Click);
             this.txbUserName.TextChanged += new System.EventHandler(this.txtuser_TextChanged);
             // 

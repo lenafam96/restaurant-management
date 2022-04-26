@@ -48,7 +48,7 @@ namespace restaurant_management.DAO
 
         public Account GetAccountByUserName(string userName)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM TaiKhoan WHERE userName = '" + userName + "' ");
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_GetAccountByUserName '" + userName + "' ");
             foreach (DataRow item in data.Rows)
             {
                 Account account = new Account(item);
