@@ -19,36 +19,31 @@ namespace restaurant_management
 {
     public partial class MainControl : Form
     {
-        private Account loginAccount;
+        private static Account loginAccount;
         private IconButton currentbtn;
         private Panel lefborderbtn;
         private Form currentchildform;
 
-        internal Account LoginAccount
+        public static Account LoginAccount
         {
             get => loginAccount;
-            set 
-            {
-                loginAccount = value;
-                ChangeAccount();
-            }
+            set => loginAccount = value;
         }
 
         public MainControl(Account account)
         {
             InitializeComponent();
-            this.LoginAccount = account;
+            LoginAccount = account;
             lefborderbtn = new Panel();
             lefborderbtn.Size = new Size(7, 50);
             PanelMenu.Controls.Add(lefborderbtn);
             timer1.Start();//dong ho
-           
+            ChangeAccount();
 
         }
 
         void ChangeAccount()
         {
-            //adminToolStripMenuItem.Enabled = type == "Admin";
             LabelUser.Text = LoginAccount.DisplayName;
             Role role = RoleDAO.Instance.GetRoleByID(loginAccount.Role);
             btnBan.Enabled = role.QuyenBan;

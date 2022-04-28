@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace restaurant_management.DAO
 {
-    class BanDAO
+    public class BanDAO
     {
         private static BanDAO instance;
 

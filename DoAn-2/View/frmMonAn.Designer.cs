@@ -31,12 +31,13 @@ namespace restaurant_management.View
         {
             this.flpMonAn = new System.Windows.Forms.FlowLayoutPanel();
             this.grbBo = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.nbuSoLuong = new System.Windows.Forms.NumericUpDown();
+            this.btnExit = new System.Windows.Forms.Button();
             this.flpMonAn.SuspendLayout();
             this.grbBo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbuSoLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // flpMonAn
@@ -60,22 +61,6 @@ namespace restaurant_management.View
             this.grbBo.TabStop = false;
             this.grbBo.Text = "Bò";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(494, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(409, 417);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(79, 20);
-            this.numericUpDown1.TabIndex = 2;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(6, 19);
@@ -85,20 +70,56 @@ namespace restaurant_management.View
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(413, 417);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 1;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // nbuSoLuong
+            // 
+            this.nbuSoLuong.Location = new System.Drawing.Point(328, 420);
+            this.nbuSoLuong.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nbuSoLuong.Name = "nbuSoLuong";
+            this.nbuSoLuong.Size = new System.Drawing.Size(79, 20);
+            this.nbuSoLuong.TabIndex = 2;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(494, 417);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "Huỷ";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmMonAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(581, 450);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nbuSoLuong);
             this.Controls.Add(this.flpMonAn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnThem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMonAn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmMonAn";
             this.Load += new System.EventHandler(this.frmMonAn_Load);
             this.flpMonAn.ResumeLayout(false);
             this.grbBo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbuSoLuong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -107,8 +128,9 @@ namespace restaurant_management.View
 
         private System.Windows.Forms.FlowLayoutPanel flpMonAn;
         private System.Windows.Forms.GroupBox grbBo;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.NumericUpDown nbuSoLuong;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExit;
     }
 }

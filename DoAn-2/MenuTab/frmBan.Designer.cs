@@ -32,11 +32,14 @@ namespace restaurant_management.MenuTab
             this.flpBan = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lsvHoaDon = new System.Windows.Forms.ListView();
-            this.stt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tenMon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.soLuong = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.donGia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.thanhTien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnThemMon = new System.Windows.Forms.Button();
+            this.btnTaoHoaDon = new System.Windows.Forms.Button();
+            this.btnThanhToan = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,16 +79,10 @@ namespace restaurant_management.MenuTab
             this.lsvHoaDon.UseCompatibleStateImageBehavior = false;
             this.lsvHoaDon.View = System.Windows.Forms.View.Details;
             // 
-            // stt
-            // 
-            this.stt.Text = "STT";
-            this.stt.Width = 36;
-            // 
             // tenMon
             // 
             this.tenMon.Text = "Tên món";
-            this.tenMon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tenMon.Width = 196;
+            this.tenMon.Width = 194;
             // 
             // soLuong
             // 
@@ -102,17 +99,57 @@ namespace restaurant_management.MenuTab
             // 
             this.thanhTien.Text = "Thành tiền";
             this.thanhTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.thanhTien.Width = 108;
+            this.thanhTien.Width = 101;
+            // 
+            // stt
+            // 
+            this.stt.Text = "STT";
+            this.stt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.stt.Width = 36;
+            // 
+            // btnThemMon
+            // 
+            this.btnThemMon.Location = new System.Drawing.Point(844, 27);
+            this.btnThemMon.Name = "btnThemMon";
+            this.btnThemMon.Size = new System.Drawing.Size(75, 23);
+            this.btnThemMon.TabIndex = 2;
+            this.btnThemMon.Text = "Thêm món";
+            this.btnThemMon.UseVisualStyleBackColor = true;
+            this.btnThemMon.Click += new System.EventHandler(this.btnThemMon_Click);
+            // 
+            // btnTaoHoaDon
+            // 
+            this.btnTaoHoaDon.Location = new System.Drawing.Point(433, 27);
+            this.btnTaoHoaDon.Name = "btnTaoHoaDon";
+            this.btnTaoHoaDon.Size = new System.Drawing.Size(97, 23);
+            this.btnTaoHoaDon.TabIndex = 2;
+            this.btnTaoHoaDon.Text = "Tạo hoá đơn";
+            this.btnTaoHoaDon.UseVisualStyleBackColor = true;
+            this.btnTaoHoaDon.Click += new System.EventHandler(this.btnTaoHoaDon_Click);
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Location = new System.Drawing.Point(844, 485);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(75, 23);
+            this.btnThanhToan.TabIndex = 2;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // frmBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 536);
+            this.Controls.Add(this.btnThanhToan);
+            this.Controls.Add(this.btnTaoHoaDon);
+            this.Controls.Add(this.btnThemMon);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flpBan);
             this.Name = "frmBan";
             this.Text = "Bàn";
+            this.Load += new System.EventHandler(this.frmBan_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -123,10 +160,13 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.FlowLayoutPanel flpBan;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListView lsvHoaDon;
-        private System.Windows.Forms.ColumnHeader stt;
         private System.Windows.Forms.ColumnHeader tenMon;
         private System.Windows.Forms.ColumnHeader soLuong;
         private System.Windows.Forms.ColumnHeader donGia;
         private System.Windows.Forms.ColumnHeader thanhTien;
+        private System.Windows.Forms.ColumnHeader stt;
+        private System.Windows.Forms.Button btnThemMon;
+        private System.Windows.Forms.Button btnTaoHoaDon;
+        private System.Windows.Forms.Button btnThanhToan;
     }
 }

@@ -14,9 +14,15 @@ namespace restaurant_management.View
 {
     public partial class frmMonAn : Form
     {
-        public frmMonAn()
+        private MonAn selected;
+        private HoaDon hoaDon;
+
+        public HoaDon HoaDon { get => hoaDon; set => hoaDon = value; }
+
+        public frmMonAn(HoaDon hoaDon)
         {
             InitializeComponent();
+            this.HoaDon = hoaDon;
         }
 
         void LoadData()
@@ -52,13 +58,30 @@ namespace restaurant_management.View
 
         private void btn_Click(object sender, EventArgs e)
         {
-            MonAn monAn = (sender as Button).Tag as MonAn;
-            MessageBox.Show(monAn.TenMonAn);
+            this.selected = (sender as Button).Tag as MonAn;
+            nbuSoLuong.Value = 0;
         }
 
         private void frmMonAn_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (nbuSoLuong.Value != 0 && this.selected != null)
+            {
+                if (ChiTietHoaDonDAO.Instance.CheckMonAnTrongHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn))
+                    ChiTietHoaDonDAO.Instance.CapNhatMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, (int)nbuSoLuong.Value);
+                else
+                    ChiTietHoaDonDAO.Instance.ThemMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, (int)nbuSoLuong.Value);
+            }
+            this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

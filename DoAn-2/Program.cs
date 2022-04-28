@@ -1,4 +1,5 @@
-﻿using restaurant_management.View;
+﻿using restaurant_management.MenuTab;
+using restaurant_management.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,8 @@ namespace restaurant_management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormStart());
-            Application.Run(new frmMonAn());
+            Application.Run(new FormStart());
+            //Application.Run(new frmBan(k));
         }
     }
 }

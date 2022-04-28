@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace restaurant_management.DTO
 {
-    class Ban
+    public class Ban
     {
         public Ban(int maBan, int trangThai)
         {

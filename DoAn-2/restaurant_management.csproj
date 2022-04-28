@@ -93,14 +93,18 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanDAO.cs" />
+    <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
     <Compile Include="DAO\DanhMucMonDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\MonAnDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\TestConnection.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Ban.cs" />
+    <Compile Include="DTO\ChiTietHoatDon.cs" />
     <Compile Include="DTO\DanhMucMon.cs" />
+    <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\MonAn.cs" />
     <Compile Include="DTO\Role.cs" />
     <Compile Include="Form1.cs">
