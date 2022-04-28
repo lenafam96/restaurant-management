@@ -12,7 +12,7 @@ namespace restaurant_management.DAO
     {
         private static HoaDonDAO instance;
 
-        internal static HoaDonDAO Instance
+        public static HoaDonDAO Instance
         {
             get => instance == null ? instance = new HoaDonDAO() : instance;
             private set => instance = value;
