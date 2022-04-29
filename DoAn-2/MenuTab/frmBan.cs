@@ -40,6 +40,9 @@ namespace restaurant_management.MenuTab
             lbVoucher.Text = "";
             lbSuDungDiem.Text = "";
             lbThanhTien.Text = "";
+            lbTenKhachHang.Text = "";
+            txtMaKhachHang.ResetText();
+            txtMaVoucher.ResetText();
             txtDiemTichLuy.ResetText();
         }
         void HienThiThanhTien()
@@ -92,6 +95,13 @@ namespace restaurant_management.MenuTab
             nbuSuDungDiem.Enabled = false;
         }
 
+        void LoadComboBoxBan()
+        {
+            List<Ban> listBan = BanDAO.Instance.GetListBanCoTheChuyen();
+            cmbBan.DataSource = listBan;
+            cmbBan.DisplayMember = "maBan";
+        }
+
         void ShowHoaDon(int maBan)
         {
             lsvHoaDon.Items.Clear();
@@ -117,6 +127,7 @@ namespace restaurant_management.MenuTab
                 this.tongTien += item.ThanhTien;
                 lsvHoaDon.Items.Add(lsvItem);
             }
+            HienThiThanhTien();
         }
 
         bool CheckMaKH()
@@ -124,7 +135,7 @@ namespace restaurant_management.MenuTab
             int maKhachHang = 0;
             int.TryParse(txtMaKhachHang.Text.Trim(), out maKhachHang);
             KhachHang khachHang = KhachHangDAO.Instance.GetKhachHangByID(maKhachHang);
-            return khachHang == null;
+            return khachHang != null;
         }
 
         bool CheckMaVoucher()
@@ -132,7 +143,7 @@ namespace restaurant_management.MenuTab
             int maVoucher = 0;
             int.TryParse(txtMaVoucher.Text.Trim(),out maVoucher);
             Voucher voucher = VoucherDAO.Instance.GetVoucherByID(maVoucher);
-            return voucher == null;
+            return voucher != null;
         }
 
         void TinhDiemTichLuy()
@@ -152,16 +163,18 @@ namespace restaurant_management.MenuTab
         private void btnBan_Click(object sender, EventArgs e)
         {
             Ban ban = (sender as Button).Tag as Ban;
+            this.BanSelected = ban;
+            this.HoaDonSelected = HoaDonDAO.Instance.GetHoaDonByMaBan(ban.MaBan);
             if (ban.TrangThai == 0)
+            {
                 DongBtn();
+                XoaLabel();
+            }    
             else
             {
                 MoBtn();
                 ShowHoaDon(ban.MaBan);
             }
-            this.BanSelected = ban;
-            this.HoaDonSelected = HoaDonDAO.Instance.GetHoaDonByMaBan(ban.MaBan);
-            HienThiThanhTien();
         }
 
         private void frmBan_Load(object sender, EventArgs e)
@@ -175,6 +188,7 @@ namespace restaurant_management.MenuTab
             lsvItem.SubItems.Add("(5) = (3) x (4)");
             lsvHoaDon.Items.Add(lsvItem);
             LoadBan();
+            LoadComboBoxBan();
         }
 
         private void btnThemMon_Click(object sender, EventArgs e)
@@ -192,35 +206,42 @@ namespace restaurant_management.MenuTab
             MoBtn();
             LoadBan();
             ShowHoaDon(this.BanSelected.MaBan);
+            LoadComboBoxBan();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            int maKhachHang = !CheckMaKH() ? 1 : int.Parse(txtMaKhachHang.Text.Trim());
+            int maVoucher = !CheckMaVoucher() ? 1 : int.Parse(txtMaVoucher.Text.Trim());
+            int diemCong = maKhachHang == 1 ? 0 : int.Parse(txtDiemTichLuy.Text);
+            int diemTru = maKhachHang == 1 ? 0 : int.Parse(nbuSuDungDiem.Value.ToString());
+            HoaDonDAO.Instance.ThanhToanHoaDon(this.HoaDonSelected.MaHoaDon, maKhachHang, diemCong, diemTru, this.thanhToan, maVoucher);
             DongBtn();
             LoadBan();
         }
 
         private void txtMaKhachHang_Leave(object sender, EventArgs e)
         {
+            lbTenKhachHang.Text = "";
+            this.suDungDiem = 0;
+            this.thanhToan = this.tongTien - this.voucher - this.suDungDiem;
+            lbSuDungDiem.Text = this.suDungDiem.ToString("c0");
+            lbThanhTien.Text = this.thanhToan.ToString("c0");
+            txtDiemTichLuy.ResetText();
             nbuSuDungDiem.Enabled = false;
             if (string.IsNullOrEmpty(txtMaKhachHang.Text))
             {
                 errorProviderKhachHang.Clear();
-                txtDiemTichLuy.ResetText();
             }
-            else if (CheckMaKH())
+            else if (!CheckMaKH())
             {
                 errorProviderKhachHang.SetError(txtMaKhachHang, "Mã khách hàng không tồn tại!");
-                this.suDungDiem = 0;
-                this.thanhToan = this.tongTien - this.voucher - this.suDungDiem;
-                lbSuDungDiem.Text = this.suDungDiem.ToString("c0");
-                lbThanhTien.Text = this.thanhToan.ToString("c0");
-                txtDiemTichLuy.ResetText();
             }    
             else
             {
                 errorProviderKhachHang.Clear();
                 KhachHang khachHang = KhachHangDAO.Instance.GetKhachHangByID(int.Parse(txtMaKhachHang.Text));
+                lbTenKhachHang.Text = khachHang.MaKhachHang == 1 ? "" : (khachHang.GioiTinh == "Nam" ? "Anh " : "Chị ") + khachHang.HoTen + " hiện có " + khachHang.DiemTichLuy + " điểm tích luỹ!";
                 nbuSuDungDiem.Enabled = true;
                 nbuSuDungDiem.Maximum = khachHang.DiemTichLuy;
                 this.suDungDiem = (int)nbuSuDungDiem.Value * 1000;
@@ -234,17 +255,17 @@ namespace restaurant_management.MenuTab
 
         private void txtMaVoucher_Leave(object sender, EventArgs e)
         {
+            this.voucher = 0;
+            this.thanhToan = this.tongTien - this.voucher - this.suDungDiem;
+            lbVoucher.Text = this.voucher.ToString("c0");
+            lbThanhTien.Text = this.thanhToan.ToString("c0");
             if (string.IsNullOrEmpty(txtMaVoucher.Text))
             {
                 errorProviderVoucher.Clear();
             }
-            else if (CheckMaVoucher())
+            else if (!CheckMaVoucher())
             {
                 errorProviderVoucher.SetError(txtMaVoucher, "Mã voucher không hợp lệ!");
-                this.voucher = 0;
-                this.thanhToan = this.tongTien - this.voucher - this.suDungDiem;
-                lbVoucher.Text = this.voucher.ToString("c0");
-                lbThanhTien.Text = this.thanhToan.ToString("c0");
             }
             else
             {
@@ -272,11 +293,28 @@ namespace restaurant_management.MenuTab
 
         private void lbThanhTien_TextChanged(object sender, EventArgs e)
         {
-            if (!CheckMaKH())
+            if (CheckMaKH())
             {
                 TinhDiemTichLuy();
                 txtDiemTichLuy.Text = this.diemTichLuy.ToString();
             }
+        }
+
+        private void btnChuyenBan_Click(object sender, EventArgs e)
+        {
+            Ban ban = cmbBan.SelectedValue as Ban;
+            if (MessageBox.Show("Xác nhận chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            {
+                HoaDonDAO.Instance.ChuyenHoaDonSangBanMoi(this.HoaDonSelected.MaHoaDon, ban.MaBan);
+                LoadBan();
+                ShowHoaDon(this.banSelected.MaBan);
+                LoadComboBoxBan();
+            }
+        }
+
+        private void cmbBan_Format(object sender, ListControlConvertEventArgs e)
+        {
+            e.Value = "Bàn " + ((Ban)e.ListItem).MaBan;
         }
     }
 }

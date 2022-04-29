@@ -38,5 +38,20 @@ namespace restaurant_management.DAO
 
             return listBan;
         }
+
+        public List<Ban> GetListBanCoTheChuyen()
+        {
+            List<Ban> listBan = new List<Ban>();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC dbo.USP_GetListBanTrong");
+
+            foreach (DataRow row in data.Rows)
+            {
+                Ban ban = new Ban(row);
+                listBan.Add(ban);
+            }
+
+            return listBan;
+        }
     }
 }

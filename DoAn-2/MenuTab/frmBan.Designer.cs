@@ -62,6 +62,9 @@ namespace restaurant_management.MenuTab
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbTenKhachHang = new System.Windows.Forms.Label();
+            this.btnChuyenBan = new System.Windows.Forms.Button();
+            this.cmbBan = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVoucher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderKhachHang)).BeginInit();
@@ -84,7 +87,7 @@ namespace restaurant_management.MenuTab
             this.panel1.Controls.Add(this.lsvHoaDon);
             this.panel1.Location = new System.Drawing.Point(433, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(486, 370);
+            this.panel1.Size = new System.Drawing.Size(486, 342);
             this.panel1.TabIndex = 1;
             // 
             // lsvHoaDon
@@ -100,7 +103,7 @@ namespace restaurant_management.MenuTab
             this.lsvHoaDon.HideSelection = false;
             this.lsvHoaDon.Location = new System.Drawing.Point(0, 0);
             this.lsvHoaDon.Name = "lsvHoaDon";
-            this.lsvHoaDon.Size = new System.Drawing.Size(486, 369);
+            this.lsvHoaDon.Size = new System.Drawing.Size(486, 342);
             this.lsvHoaDon.TabIndex = 0;
             this.lsvHoaDon.UseCompatibleStateImageBehavior = false;
             this.lsvHoaDon.View = System.Windows.Forms.View.Details;
@@ -155,9 +158,10 @@ namespace restaurant_management.MenuTab
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Location = new System.Drawing.Point(844, 501);
+            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.Location = new System.Drawing.Point(704, 501);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(75, 23);
+            this.btnThanhToan.Size = new System.Drawing.Size(175, 23);
             this.btnThanhToan.TabIndex = 6;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
@@ -168,14 +172,14 @@ namespace restaurant_management.MenuTab
             this.lbTenBan.AutoSize = true;
             this.lbTenBan.Location = new System.Drawing.Point(667, 18);
             this.lbTenBan.Name = "lbTenBan";
-            this.lbTenBan.Size = new System.Drawing.Size(35, 13);
+            this.lbTenBan.Size = new System.Drawing.Size(44, 13);
             this.lbTenBan.TabIndex = 3;
-            this.lbTenBan.Text = "label1";
+            this.lbTenBan.Text = "Bàn xxx";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(741, 422);
+            this.label5.Location = new System.Drawing.Point(701, 421);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 8;
@@ -184,7 +188,7 @@ namespace restaurant_management.MenuTab
             // lbTongTien
             // 
             this.lbTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongTien.Location = new System.Drawing.Point(829, 422);
+            this.lbTongTien.Location = new System.Drawing.Point(789, 421);
             this.lbTongTien.Name = "lbTongTien";
             this.lbTongTien.Size = new System.Drawing.Size(90, 13);
             this.lbTongTien.TabIndex = 8;
@@ -194,7 +198,7 @@ namespace restaurant_management.MenuTab
             // lbVoucher
             // 
             this.lbVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVoucher.Location = new System.Drawing.Point(829, 439);
+            this.lbVoucher.Location = new System.Drawing.Point(789, 438);
             this.lbVoucher.Name = "lbVoucher";
             this.lbVoucher.Size = new System.Drawing.Size(90, 13);
             this.lbVoucher.TabIndex = 8;
@@ -204,7 +208,7 @@ namespace restaurant_management.MenuTab
             // lbSuDungDiem
             // 
             this.lbSuDungDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSuDungDiem.Location = new System.Drawing.Point(829, 455);
+            this.lbSuDungDiem.Location = new System.Drawing.Point(789, 454);
             this.lbSuDungDiem.Name = "lbSuDungDiem";
             this.lbSuDungDiem.Size = new System.Drawing.Size(90, 13);
             this.lbSuDungDiem.TabIndex = 8;
@@ -214,7 +218,7 @@ namespace restaurant_management.MenuTab
             // lbThanhTien
             // 
             this.lbThanhTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbThanhTien.Location = new System.Drawing.Point(829, 478);
+            this.lbThanhTien.Location = new System.Drawing.Point(789, 477);
             this.lbThanhTien.Name = "lbThanhTien";
             this.lbThanhTien.Size = new System.Drawing.Size(90, 13);
             this.lbThanhTien.TabIndex = 8;
@@ -226,7 +230,7 @@ namespace restaurant_management.MenuTab
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(741, 478);
+            this.label10.Location = new System.Drawing.Point(701, 477);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 13);
             this.label10.TabIndex = 8;
@@ -235,7 +239,7 @@ namespace restaurant_management.MenuTab
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(741, 439);
+            this.label6.Location = new System.Drawing.Point(701, 438);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 8;
@@ -244,7 +248,7 @@ namespace restaurant_management.MenuTab
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(741, 455);
+            this.label7.Location = new System.Drawing.Point(701, 454);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 8;
@@ -256,7 +260,7 @@ namespace restaurant_management.MenuTab
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(743, 465);
+            this.label8.Location = new System.Drawing.Point(703, 464);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(180, 10);
@@ -277,16 +281,16 @@ namespace restaurant_management.MenuTab
             this.grpanel.Controls.Add(this.label3);
             this.grpanel.Controls.Add(this.label2);
             this.grpanel.Controls.Add(this.label1);
-            this.grpanel.Location = new System.Drawing.Point(433, 417);
+            this.grpanel.Location = new System.Drawing.Point(433, 388);
             this.grpanel.Name = "grpanel";
-            this.grpanel.Size = new System.Drawing.Size(269, 107);
+            this.grpanel.Size = new System.Drawing.Size(234, 107);
             this.grpanel.TabIndex = 10;
             // 
             // nbuSuDungDiem
             // 
             this.nbuSuDungDiem.Location = new System.Drawing.Point(96, 59);
             this.nbuSuDungDiem.Name = "nbuSuDungDiem";
-            this.nbuSuDungDiem.Size = new System.Drawing.Size(116, 20);
+            this.nbuSuDungDiem.Size = new System.Drawing.Size(122, 20);
             this.nbuSuDungDiem.TabIndex = 5;
             this.nbuSuDungDiem.ValueChanged += new System.EventHandler(this.nbuSuDungDiem_ValueChanged);
             // 
@@ -294,7 +298,7 @@ namespace restaurant_management.MenuTab
             // 
             this.txtMaVoucher.Location = new System.Drawing.Point(96, 30);
             this.txtMaVoucher.Name = "txtMaVoucher";
-            this.txtMaVoucher.Size = new System.Drawing.Size(116, 20);
+            this.txtMaVoucher.Size = new System.Drawing.Size(122, 20);
             this.txtMaVoucher.TabIndex = 4;
             this.txtMaVoucher.Leave += new System.EventHandler(this.txtMaVoucher_Leave);
             // 
@@ -303,14 +307,14 @@ namespace restaurant_management.MenuTab
             this.txtDiemTichLuy.Location = new System.Drawing.Point(96, 86);
             this.txtDiemTichLuy.Name = "txtDiemTichLuy";
             this.txtDiemTichLuy.ReadOnly = true;
-            this.txtDiemTichLuy.Size = new System.Drawing.Size(116, 20);
+            this.txtDiemTichLuy.Size = new System.Drawing.Size(122, 20);
             this.txtDiemTichLuy.TabIndex = 13;
             // 
             // txtMaKhachHang
             // 
             this.txtMaKhachHang.Location = new System.Drawing.Point(96, 2);
             this.txtMaKhachHang.Name = "txtMaKhachHang";
-            this.txtMaKhachHang.Size = new System.Drawing.Size(116, 20);
+            this.txtMaKhachHang.Size = new System.Drawing.Size(122, 20);
             this.txtMaKhachHang.TabIndex = 3;
             this.txtMaKhachHang.Leave += new System.EventHandler(this.txtMaKhachHang_Leave);
             // 
@@ -350,11 +354,40 @@ namespace restaurant_management.MenuTab
             this.label1.TabIndex = 11;
             this.label1.Text = "Mã khách hàng:";
             // 
+            // lbTenKhachHang
+            // 
+            this.lbTenKhachHang.AutoSize = true;
+            this.lbTenKhachHang.Location = new System.Drawing.Point(667, 393);
+            this.lbTenKhachHang.Name = "lbTenKhachHang";
+            this.lbTenKhachHang.Size = new System.Drawing.Size(168, 13);
+            this.lbTenKhachHang.TabIndex = 11;
+            this.lbTenKhachHang.Text = "Tên khách hàng hiện có xxx điểm";
+            // 
+            // btnChuyenBan
+            // 
+            this.btnChuyenBan.Location = new System.Drawing.Point(536, 501);
+            this.btnChuyenBan.Name = "btnChuyenBan";
+            this.btnChuyenBan.Size = new System.Drawing.Size(75, 23);
+            this.btnChuyenBan.TabIndex = 6;
+            this.btnChuyenBan.Text = "Chuyển bàn";
+            this.btnChuyenBan.UseVisualStyleBackColor = true;
+            this.btnChuyenBan.Click += new System.EventHandler(this.btnChuyenBan_Click);
+            // 
+            // cmbBan
+            // 
+            this.cmbBan.FormattingEnabled = true;
+            this.cmbBan.Location = new System.Drawing.Point(433, 503);
+            this.cmbBan.Name = "cmbBan";
+            this.cmbBan.Size = new System.Drawing.Size(97, 21);
+            this.cmbBan.TabIndex = 12;
+            this.cmbBan.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cmbBan_Format);
+            // 
             // frmBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 536);
+            this.Controls.Add(this.cmbBan);
             this.Controls.Add(this.grpanel);
             this.Controls.Add(this.lbThanhTien);
             this.Controls.Add(this.lbSuDungDiem);
@@ -362,9 +395,11 @@ namespace restaurant_management.MenuTab
             this.Controls.Add(this.lbTongTien);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbTenKhachHang);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbTenBan);
+            this.Controls.Add(this.btnChuyenBan);
             this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.btnTaoHoaDon);
             this.Controls.Add(this.btnThemMon);
@@ -419,5 +454,8 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTenKhachHang;
+        private System.Windows.Forms.ComboBox cmbBan;
+        private System.Windows.Forms.Button btnChuyenBan;
     }
 }
