@@ -253,6 +253,7 @@
     <EmbeddedResource Include="View\frmMonAn.resx">
       <DependentUpon>frmMonAn.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="database\quanlynhahang.bak" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ClassHD.datasource" />
     <None Include="Properties\Settings.settings">
@@ -316,6 +317,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="database\Script insert data.sql" />
+    <Content Include="database\Script tao bang.sql" />
+    <Content Include="database\Script tao Procedure.sql" />
     <Content Include="IMG\cocacola-lon.png" />
     <Content Include="IMG\Keotraicay4mua.jpg" />
     <Content Include="IMG\pepsi-lon.png" />
