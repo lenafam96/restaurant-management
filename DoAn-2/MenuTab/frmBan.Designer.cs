@@ -63,8 +63,8 @@ namespace restaurant_management.MenuTab
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbTenKhachHang = new System.Windows.Forms.Label();
-            this.btnChuyenBan = new System.Windows.Forms.Button();
             this.cmbBan = new System.Windows.Forms.ComboBox();
+            this.btnChuyenBan = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVoucher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderKhachHang)).BeginInit();
@@ -273,6 +273,8 @@ namespace restaurant_management.MenuTab
             // 
             // grpanel
             // 
+            this.grpanel.Controls.Add(this.cmbBan);
+            this.grpanel.Controls.Add(this.btnChuyenBan);
             this.grpanel.Controls.Add(this.nbuSuDungDiem);
             this.grpanel.Controls.Add(this.txtMaVoucher);
             this.grpanel.Controls.Add(this.txtDiemTichLuy);
@@ -283,7 +285,7 @@ namespace restaurant_management.MenuTab
             this.grpanel.Controls.Add(this.label1);
             this.grpanel.Location = new System.Drawing.Point(433, 388);
             this.grpanel.Name = "grpanel";
-            this.grpanel.Size = new System.Drawing.Size(234, 107);
+            this.grpanel.Size = new System.Drawing.Size(234, 146);
             this.grpanel.TabIndex = 10;
             // 
             // nbuSuDungDiem
@@ -363,31 +365,29 @@ namespace restaurant_management.MenuTab
             this.lbTenKhachHang.TabIndex = 11;
             this.lbTenKhachHang.Text = "Tên khách hàng hiện có xxx điểm";
             // 
-            // btnChuyenBan
-            // 
-            this.btnChuyenBan.Location = new System.Drawing.Point(536, 501);
-            this.btnChuyenBan.Name = "btnChuyenBan";
-            this.btnChuyenBan.Size = new System.Drawing.Size(75, 23);
-            this.btnChuyenBan.TabIndex = 6;
-            this.btnChuyenBan.Text = "Chuyển bàn";
-            this.btnChuyenBan.UseVisualStyleBackColor = true;
-            this.btnChuyenBan.Click += new System.EventHandler(this.btnChuyenBan_Click);
-            // 
             // cmbBan
             // 
             this.cmbBan.FormattingEnabled = true;
-            this.cmbBan.Location = new System.Drawing.Point(433, 503);
+            this.cmbBan.Location = new System.Drawing.Point(8, 115);
             this.cmbBan.Name = "cmbBan";
             this.cmbBan.Size = new System.Drawing.Size(97, 21);
-            this.cmbBan.TabIndex = 12;
+            this.cmbBan.TabIndex = 15;
             this.cmbBan.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cmbBan_Format);
+            // 
+            // btnChuyenBan
+            // 
+            this.btnChuyenBan.Location = new System.Drawing.Point(111, 113);
+            this.btnChuyenBan.Name = "btnChuyenBan";
+            this.btnChuyenBan.Size = new System.Drawing.Size(75, 23);
+            this.btnChuyenBan.TabIndex = 14;
+            this.btnChuyenBan.Text = "Chuyển bàn";
+            this.btnChuyenBan.UseVisualStyleBackColor = true;
             // 
             // frmBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 536);
-            this.Controls.Add(this.cmbBan);
             this.Controls.Add(this.grpanel);
             this.Controls.Add(this.lbThanhTien);
             this.Controls.Add(this.lbSuDungDiem);
@@ -399,7 +399,6 @@ namespace restaurant_management.MenuTab
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbTenBan);
-            this.Controls.Add(this.btnChuyenBan);
             this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.btnTaoHoaDon);
             this.Controls.Add(this.btnThemMon);
