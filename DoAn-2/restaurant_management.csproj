@@ -50,18 +50,6 @@
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Images.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v19.2" />
     <Reference Include="FontAwesome.Sharp, Version=5.13.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.13.0\lib\net45\FontAwesome.Sharp.dll</HintPath>
       <Private>True</Private>
@@ -97,6 +85,7 @@
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanDAO.cs" />
     <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
+    <Compile Include="DAO\ChiTietMonAnDAO.cs" />
     <Compile Include="DAO\DanhMucMonDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />
@@ -110,6 +99,7 @@
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Ban.cs" />
     <Compile Include="DTO\ChiTietHoatDon.cs" />
+    <Compile Include="DTO\ChiTietMonAn.cs" />
     <Compile Include="DTO\DanhMucMon.cs" />
     <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\KhachHang.cs" />
@@ -141,6 +131,12 @@
     </Compile>
     <Compile Include="View\frmCaiDatDanhMucMon.Designer.cs">
       <DependentUpon>frmCaiDatDanhMucMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCaiDatMonAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCaiDatMonAn.Designer.cs">
+      <DependentUpon>frmCaiDatMonAn.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmCaiDatTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -233,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCaiDatDanhMucMon.resx">
       <DependentUpon>frmCaiDatDanhMucMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCaiDatMonAn.resx">
+      <DependentUpon>frmCaiDatMonAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCaiDatTaiKhoan.resx">
       <DependentUpon>frmCaiDatTaiKhoan.cs</DependentUpon>

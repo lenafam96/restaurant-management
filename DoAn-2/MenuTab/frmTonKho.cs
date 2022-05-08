@@ -55,7 +55,7 @@ namespace restaurant_management.MenuTab
 
         void LoadListThucPham()
         {
-            list.DataSource = ThucPhamDAO.Instance.GetListThucPham();
+            list.DataSource = ThucPhamDAO.Instance.GetDataTableThucPham();
             btnEdit.Enabled = list.Count > 0 ? true : false;
             btnDelete.Enabled = list.Count > 0 ? true : false;
         }
@@ -156,21 +156,37 @@ namespace restaurant_management.MenuTab
             }
         }
 
-        private void txtTenNhanVien_Leave(object sender, EventArgs e)
+        private void txtTenThucPham_Leave(object sender, EventArgs e)
         {
-            checkTenThucPham = false;
-            if (string.IsNullOrEmpty(txtTenThucPham.Text))
+            if (Add)
             {
-                errorProviderTenThucPham.SetError(txtTenThucPham, "Tên thực phẩm không được để trống!");
-            }
-            else if (ThucPhamDAO.Instance.CheckTenThucPhamExist(txtTenThucPham.Text))
-            {
-                errorProviderTenThucPham.SetError(txtTenThucPham, "Tên thực phẩm đã tồn tại!");
+                checkTenThucPham = false;
+                if (string.IsNullOrEmpty(txtTenThucPham.Text))
+                {
+                    errorProviderTenThucPham.SetError(txtTenThucPham, "Tên thực phẩm không được để trống!");
+                }
+                else if (ThucPhamDAO.Instance.CheckTenThucPhamExist(txtTenThucPham.Text))
+                {
+                    errorProviderTenThucPham.SetError(txtTenThucPham, "Tên thực phẩm đã tồn tại!");
+                }
+                else
+                {
+                    errorProviderTenThucPham.Clear();
+                    checkTenThucPham = true;
+                }
             }
             else
             {
-                errorProviderTenThucPham.Clear();
-                checkTenThucPham = true;
+                checkTenThucPham = false;
+                if (string.IsNullOrEmpty(txtTenThucPham.Text))
+                {
+                    errorProviderTenThucPham.SetError(txtTenThucPham, "Tên thực phẩm không được để trống!");
+                }
+                else
+                {
+                    errorProviderTenThucPham.Clear();
+                    checkTenThucPham = true;
+                }
             }
         }
 
@@ -223,6 +239,5 @@ namespace restaurant_management.MenuTab
         {
             list.Sort = dtgvThucPham.SortString;
         }
-
     }
 }

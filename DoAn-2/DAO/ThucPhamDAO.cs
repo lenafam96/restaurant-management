@@ -1,4 +1,5 @@
-﻿using System;
+﻿using restaurant_management.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -19,7 +20,19 @@ namespace restaurant_management.DAO
 
         public ThucPhamDAO() { }
 
-        public DataTable GetListThucPham()
+        public List<ThucPham> GetListThucPham()
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_GetListThucPham");
+            List<ThucPham> list = new List<ThucPham>();
+            foreach (DataRow item in data.Rows)
+            {
+                ThucPham tp = new ThucPham(item);
+                list.Add(tp);
+            }
+            return list;
+        }
+
+        public DataTable GetDataTableThucPham()
         {
             return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListThucPham");
         }

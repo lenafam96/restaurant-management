@@ -81,7 +81,7 @@ namespace restaurant_management.MenuTab
             this.txtTenThucPham.Name = "txtTenThucPham";
             this.txtTenThucPham.Size = new System.Drawing.Size(315, 22);
             this.txtTenThucPham.TabIndex = 2;
-            this.txtTenThucPham.Leave += new System.EventHandler(this.txtTenNhanVien_Leave);
+            this.txtTenThucPham.Leave += new System.EventHandler(this.txtTenThucPham_Leave);
             // 
             // label3
             // 

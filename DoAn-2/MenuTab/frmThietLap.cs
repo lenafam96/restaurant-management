@@ -275,7 +275,7 @@ namespace restaurant_management.MenuTab
             {
                 case 0: motrangcon(new frmCaiDatTaiKhoan()); break;
                 case 1: motrangcon(new frmCaiDatDanhMucMon()); break;
-                case 2: motrangcon(new frmCaiDatTaiKhoan()); break;
+                case 2: motrangcon(new frmCaiDatMonAn()); break;
             }
         }
 
