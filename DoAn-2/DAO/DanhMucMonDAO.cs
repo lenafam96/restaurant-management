@@ -44,5 +44,27 @@ namespace restaurant_management.DAO
         {
             return DataProvider.Instance.ExecuteQuery("USP_GetListDanhMucMon");
         }
+
+        public bool InsertDanhMucMon(string tenDanhMucMon)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertDanhMucMon @tenDanhMucMon ", new object[] { tenDanhMucMon });
+            return count > 0;
+        }
+
+        public bool UpdateDanhMucMon(int maDanhMucMon, string tenDanhMucMon)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_UpdateDanhMucMon @maDanhMucMon , @tenDanhMucMon ", new object[] { maDanhMucMon, tenDanhMucMon });
+            return count > 0;
+        }
+
+        public bool DeleteDanhMucMon(int maDanhMucMon)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_DeleteDanhMucMon " + maDanhMucMon);
+            return count > 0;
+        }
+        public bool CheckTenDanhMucMonExist(string tenDanhMucMon)
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetDanhMucMonByName @tenDanhMucMon ", new object[] { tenDanhMucMon }).Rows.Count > 0;
+        }
     }
 }

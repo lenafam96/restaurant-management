@@ -48,7 +48,7 @@ namespace restaurant_management.MenuTab
             this.txtMaDanhMucMon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpMonAn = new System.Windows.Forms.TabPage();
             this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProviderUserName = new System.Windows.Forms.ErrorProvider(this.components);
             this.nameRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,12 +65,12 @@ namespace restaurant_management.MenuTab
             // 
             this.tabControl1.Controls.Add(this.tpTaiKhoan);
             this.tabControl1.Controls.Add(this.tpDanhMucMon);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tpMonAn);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(931, 24);
+            this.tabControl1.Size = new System.Drawing.Size(931, 22);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -267,15 +267,15 @@ namespace restaurant_management.MenuTab
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã danh mục món:";
             // 
-            // tabPage1
+            // tpMonAn
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(923, 0);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpMonAn.Location = new System.Drawing.Point(4, 22);
+            this.tpMonAn.Name = "tpMonAn";
+            this.tpMonAn.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMonAn.Size = new System.Drawing.Size(923, 0);
+            this.tpMonAn.TabIndex = 2;
+            this.tpMonAn.Text = "Món ăn";
+            this.tpMonAn.UseVisualStyleBackColor = true;
             // 
             // userName
             // 
@@ -354,7 +354,7 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.TextBox txtMaDanhMucMon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpMonAn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userName;
         private System.Windows.Forms.ErrorProvider errorProviderUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameRole;

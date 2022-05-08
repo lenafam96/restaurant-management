@@ -9,6 +9,7 @@ namespace restaurant_management.DTO
 {
     class ChiTietHoatDon
     {
+        //Vì món ăn nằm trong hoá đơn nên chỉ cần hiển thị tên món, số lượng, giá tiền và thành tiền
         public ChiTietHoatDon(string tenMonAn, int soLuong, int gia, int thanhTien = 0)
         {
             this.tenMonAn = tenMonAn;

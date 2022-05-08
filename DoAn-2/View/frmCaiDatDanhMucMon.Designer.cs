@@ -30,7 +30,9 @@ namespace restaurant_management.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dtgvAccount = new ADGV.AdvancedDataGridView();
+            this.dtgvDanhMucMon = new ADGV.AdvancedDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -39,38 +41,58 @@ namespace restaurant_management.View
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grPanel = new System.Windows.Forms.Panel();
+            this.txtTenDanhMucMon = new System.Windows.Forms.TextBox();
             this.txtMaDanhMucMon = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.errorProviderDanhMucMon = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtTenDanhMucMon = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
+            this.errorProviderTenDanhMucMon = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhMucMon)).BeginInit();
             this.panel2.SuspendLayout();
             this.grPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDanhMucMon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTenDanhMucMon)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgvAccount
+            // dtgvDanhMucMon
             // 
-            this.dtgvAccount.AllowUserToAddRows = false;
-            this.dtgvAccount.AllowUserToDeleteRows = false;
-            this.dtgvAccount.AutoGenerateContextFilters = true;
-            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvAccount.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvDanhMucMon.AllowUserToAddRows = false;
+            this.dtgvDanhMucMon.AllowUserToDeleteRows = false;
+            this.dtgvDanhMucMon.AutoGenerateContextFilters = true;
+            this.dtgvDanhMucMon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDanhMucMon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dtgvAccount.DateWithTime = false;
-            this.dtgvAccount.Location = new System.Drawing.Point(13, 165);
-            this.dtgvAccount.Name = "dtgvAccount";
-            this.dtgvAccount.ReadOnly = true;
-            this.dtgvAccount.RowHeadersVisible = false;
-            this.dtgvAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvAccount.Size = new System.Drawing.Size(910, 352);
-            this.dtgvAccount.TabIndex = 28;
-            this.dtgvAccount.TimeFilter = false;
-            this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
+            this.dtgvDanhMucMon.DateWithTime = false;
+            this.dtgvDanhMucMon.Location = new System.Drawing.Point(13, 165);
+            this.dtgvDanhMucMon.Name = "dtgvDanhMucMon";
+            this.dtgvDanhMucMon.ReadOnly = true;
+            this.dtgvDanhMucMon.RowHeadersVisible = false;
+            this.dtgvDanhMucMon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvDanhMucMon.Size = new System.Drawing.Size(910, 352);
+            this.dtgvDanhMucMon.TabIndex = 28;
+            this.dtgvDanhMucMon.TimeFilter = false;
+            this.dtgvDanhMucMon.SortStringChanged += new System.EventHandler(this.dtgvDanhMucMon_SortStringChanged);
+            this.dtgvDanhMucMon.FilterStringChanged += new System.EventHandler(this.dtgvDanhMucMon_FilterStringChanged);
+            this.dtgvDanhMucMon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhMucMon_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "maDanhMucMon";
+            this.Column1.HeaderText = "Mã danh mục món";
+            this.Column1.MinimumWidth = 22;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "tenDanhMucMon";
+            this.Column2.HeaderText = "Tên danh mục món";
+            this.Column2.MinimumWidth = 22;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label1
             // 
@@ -164,6 +186,14 @@ namespace restaurant_management.View
             this.grPanel.Size = new System.Drawing.Size(910, 43);
             this.grPanel.TabIndex = 26;
             // 
+            // txtTenDanhMucMon
+            // 
+            this.txtTenDanhMucMon.Location = new System.Drawing.Point(548, 10);
+            this.txtTenDanhMucMon.Name = "txtTenDanhMucMon";
+            this.txtTenDanhMucMon.Size = new System.Drawing.Size(335, 20);
+            this.txtTenDanhMucMon.TabIndex = 1;
+            this.txtTenDanhMucMon.Leave += new System.EventHandler(this.txtTenDanhMucMon_Leave);
+            // 
             // txtMaDanhMucMon
             // 
             this.txtMaDanhMucMon.Location = new System.Drawing.Point(121, 10);
@@ -194,54 +224,27 @@ namespace restaurant_management.View
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã danh mục món:";
             // 
-            // errorProviderDanhMucMon
+            // errorProviderTenDanhMucMon
             // 
-            this.errorProviderDanhMucMon.ContainerControl = this;
-            // 
-            // txtTenDanhMucMon
-            // 
-            this.txtTenDanhMucMon.Location = new System.Drawing.Point(548, 10);
-            this.txtTenDanhMucMon.Name = "txtTenDanhMucMon";
-            this.txtTenDanhMucMon.Size = new System.Drawing.Size(335, 20);
-            this.txtTenDanhMucMon.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "maDanhMucMon";
-            this.Column1.HeaderText = "Mã danh mục món";
-            this.Column1.MinimumWidth = 22;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "tenDanhMucMon";
-            this.Column2.HeaderText = "Tên danh mục món";
-            this.Column2.MinimumWidth = 22;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.errorProviderTenDanhMucMon.ContainerControl = this;
             // 
             // frmCaiDatDanhMucMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 534);
-            this.Controls.Add(this.dtgvAccount);
+            this.Controls.Add(this.dtgvDanhMucMon);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.grPanel);
             this.Name = "frmCaiDatDanhMucMon";
             this.Text = "frmCaiDatDanhMucMon";
             this.Load += new System.EventHandler(this.frmCaiDatDanhMucMon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhMucMon)).EndInit();
             this.panel2.ResumeLayout(false);
             this.grPanel.ResumeLayout(false);
             this.grPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDanhMucMon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTenDanhMucMon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,7 +252,7 @@ namespace restaurant_management.View
 
         #endregion
 
-        private ADGV.AdvancedDataGridView dtgvAccount;
+        private ADGV.AdvancedDataGridView dtgvDanhMucMon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDelete;
@@ -261,7 +264,7 @@ namespace restaurant_management.View
         private System.Windows.Forms.TextBox txtMaDanhMucMon;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ErrorProvider errorProviderDanhMucMon;
+        private System.Windows.Forms.ErrorProvider errorProviderTenDanhMucMon;
         private System.Windows.Forms.TextBox txtTenDanhMucMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
