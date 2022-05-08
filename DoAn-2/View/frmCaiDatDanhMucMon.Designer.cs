@@ -70,6 +70,7 @@ namespace restaurant_management.View
             this.dtgvAccount.Size = new System.Drawing.Size(910, 352);
             this.dtgvAccount.TabIndex = 28;
             this.dtgvAccount.TimeFilter = false;
+            this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
             // 
             // label1
             // 
@@ -105,6 +106,7 @@ namespace restaurant_management.View
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel
             // 
@@ -115,6 +117,7 @@ namespace restaurant_management.View
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -125,6 +128,7 @@ namespace restaurant_management.View
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
@@ -135,6 +139,7 @@ namespace restaurant_management.View
             this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -145,6 +150,7 @@ namespace restaurant_management.View
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // grPanel
             // 
@@ -230,6 +236,7 @@ namespace restaurant_management.View
             this.Controls.Add(this.grPanel);
             this.Name = "frmCaiDatDanhMucMon";
             this.Text = "frmCaiDatDanhMucMon";
+            this.Load += new System.EventHandler(this.frmCaiDatDanhMucMon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel2.ResumeLayout(false);
             this.grPanel.ResumeLayout(false);
