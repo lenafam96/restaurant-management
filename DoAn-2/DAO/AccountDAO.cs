@@ -32,18 +32,11 @@ namespace restaurant_management.DAO
             return data.Rows.Count > 0;
         }
 
-        public List<Account> GetAccountList()
+        public DataTable GetAccountList()
         {
             string query = "EXEC dbo.USP_GetAccountList";
 
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            List<Account> listAccount = new List<Account>();
-            foreach (DataRow item in data.Rows)
-            {
-                Account account = new Account(item);
-                listAccount.Add(account);
-            }
-            return listAccount;
+            return DataProvider.Instance.ExecuteQuery(query);
         }
 
         public Account GetAccountByUserName(string userName)
@@ -85,22 +78,22 @@ namespace restaurant_management.DAO
             return count > 0;
         }
 
-        public bool UpdateAccountRole(string userName, string displayName, int role)
+        public bool UpdateAccountRole(string userName, int maNhanVien, int role)
         {
 
-            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_UpdateRoleAccount @userName , @displayName , @role ", new object[] { userName, displayName, role });
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_UpdateRoleAccount @userName , @maNhanVien , @role ", new object[] { userName, maNhanVien, role });
             return count > 0;
         }
 
-        public bool CreateNewAccount(string userName, string displayName, int role)
+        public bool CreateNewAccount(string userName, int maNhanVien, int role)
         {
-            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_InsertAccount @userName , @displayName , @role ", new object[] { userName, displayName, role });
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_InsertAccount @userName , @maNhanVien , @role ", new object[] { userName, maNhanVien, role });
             return count > 0;
         }
 
-        public bool EditAccountInfo(string userName, string displayName, int role)
+        public bool EditAccountInfo(string userName, int maNhanVien, int role)
         {
-            int count = DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.TaiKhoan SET displayName = N'" + displayName + "', role = " + role + " WHERE userName = N'" + userName + "' ");
+            int count = DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.TaiKhoan SET maNhanVien = N'" + maNhanVien + "', role = " + role + " WHERE userName = N'" + userName + "' ");
             return count > 0;
         }
 

@@ -308,7 +308,7 @@ namespace restaurant_management.MenuTab
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label3.Location = new System.Drawing.Point(487, 12);
+            this.label3.Location = new System.Drawing.Point(487, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 0;
@@ -358,14 +358,15 @@ namespace restaurant_management.MenuTab
             // 
             // nbuGiaTri
             // 
-            this.nbuGiaTri.Location = new System.Drawing.Point(544, 10);
+            this.nbuGiaTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbuGiaTri.Location = new System.Drawing.Point(543, 9);
             this.nbuGiaTri.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.nbuGiaTri.Name = "nbuGiaTri";
-            this.nbuGiaTri.Size = new System.Drawing.Size(138, 20);
+            this.nbuGiaTri.Size = new System.Drawing.Size(139, 22);
             this.nbuGiaTri.TabIndex = 8;
             // 
             // dtpkNgayKT

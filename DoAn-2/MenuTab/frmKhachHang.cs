@@ -84,7 +84,6 @@ namespace restaurant_management.MenuTab
         {
             LoadData();
             dtpkNgaySinh.MaxDate = DateTime.Now;
-            dtgvKhachHang.Columns[6].Visible = false;
         }
 
         private void dtgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)

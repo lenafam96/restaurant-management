@@ -19,7 +19,7 @@ namespace restaurant_management
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormStart());
-            Application.Run(new frmVoucher());
+            Application.Run(new frmThietLap());
         }
     }
 }
