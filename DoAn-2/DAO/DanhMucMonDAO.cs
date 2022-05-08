@@ -39,5 +39,10 @@ namespace restaurant_management.DAO
 
             return listDanhMucMon;
         }
+
+        public DataTable GetDataTableDanhMucMon()
+        {
+            return DataProvider.Instance.ExecuteQuery("USP_GetListDanhMucMon");
+        }
     }
 }

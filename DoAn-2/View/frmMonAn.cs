@@ -49,6 +49,8 @@ namespace restaurant_management.View
                 btn.Font = new Font(btn.Font.FontFamily, 8);
                 btn.Text = list[i].TenMonAn;
                 btn.Tag = list[i];
+                btn.BackColor = Color.FromArgb(172, 126, 241);
+                btn.ForeColor = Color.White;
                 btn.Click += btn_Click;
                 grb.Controls.Add(btn);
                 btn.Location = new Point(20 + 120 * (i % 4), (i / 4) * 50 + 30);

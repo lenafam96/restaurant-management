@@ -12,7 +12,7 @@ namespace restaurant_management.DAO
     {
         private static HoaDonDAO instance;
 
-        internal static HoaDonDAO Instance
+        public static HoaDonDAO Instance
         {
             get => instance == null ? instance = new HoaDonDAO() : instance;
             private set => instance = value;
@@ -30,6 +30,17 @@ namespace restaurant_management.DAO
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_GetHoaDonByMaBan " + maBan);
             return data.Rows.Count > 0 ? new HoaDon(data.Rows[0]) : null;
+        }
+        public bool ThanhToanHoaDon(int maHoaDon, int maKhachHang, int diemCong, int diemTru, int tongTien, int maVoucher)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_ThanhToanHoaDon @maHoaDon , @maKhachHang , @diemCong , @diemTru , @tongTien , @maVoucher ", new object[] { maHoaDon, maKhachHang, diemCong, diemTru, tongTien, maVoucher });
+            return count > 0;
+        }
+
+        public bool ChuyenHoaDonSangBanMoi(int maHoaDon, int maBanMoi)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_ChuyenHoaDonSangBanMoi @maHoaDon , @maBanMoi ", new object[] { maHoaDon, maBanMoi });
+            return count > 0;
         }
     }
 }

@@ -30,325 +30,334 @@ namespace restaurant_management.MenuTab
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.grPanel = new System.Windows.Forms.Panel();
-            this.radioPhucVu = new System.Windows.Forms.RadioButton();
-            this.radioThuNgan = new System.Windows.Forms.RadioButton();
-            this.radioQuanKho = new System.Windows.Forms.RadioButton();
-            this.radioQuanTriVien = new System.Windows.Forms.RadioButton();
-            this.radioOngChu = new System.Windows.Forms.RadioButton();
-            this.txtDisplayName = new System.Windows.Forms.TextBox();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtgvAccount = new System.Windows.Forms.DataGridView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpTaiKhoan = new System.Windows.Forms.TabPage();
+            this.tpDanhMucMon = new System.Windows.Forms.TabPage();
+            this.dtgvDanhMucMon = new ADGV.AdvancedDataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete1 = new System.Windows.Forms.Button();
+            this.btnCancel1 = new System.Windows.Forms.Button();
+            this.btnSave1 = new System.Windows.Forms.Button();
+            this.btnEdit1 = new System.Windows.Forms.Button();
+            this.btnAdd1 = new System.Windows.Forms.Button();
+            this.grPanel1 = new System.Windows.Forms.Panel();
+            this.txtTenDanhMucMon = new System.Windows.Forms.TextBox();
+            this.txtMaDanhMucMon = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProviderUserName = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel2.SuspendLayout();
-            this.grPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
+            this.nameRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paneltrangcon = new System.Windows.Forms.Panel();
+            this.tabControl1.SuspendLayout();
+            this.tpDanhMucMon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhMucMon)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.grPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // tabControl1
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnExit);
-            this.panel2.Controls.Add(this.btnReset);
-            this.panel2.Controls.Add(this.btnDelete);
-            this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.btnEdit);
-            this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Location = new System.Drawing.Point(195, 178);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(600, 39);
-            this.panel2.TabIndex = 11;
+            this.tabControl1.Controls.Add(this.tpTaiKhoan);
+            this.tabControl1.Controls.Add(this.tpDanhMucMon);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(931, 24);
+            this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // btnExit
+            // tpTaiKhoan
             // 
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnExit.Location = new System.Drawing.Point(515, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(78, 26);
-            this.btnExit.TabIndex = 14;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.tpTaiKhoan.Location = new System.Drawing.Point(4, 22);
+            this.tpTaiKhoan.Name = "tpTaiKhoan";
+            this.tpTaiKhoan.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTaiKhoan.Size = new System.Drawing.Size(923, 0);
+            this.tpTaiKhoan.TabIndex = 0;
+            this.tpTaiKhoan.Text = "Tài khoản";
+            this.tpTaiKhoan.UseVisualStyleBackColor = true;
             // 
-            // btnReset
+            // tpDanhMucMon
             // 
-            this.btnReset.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnReset.Location = new System.Drawing.Point(165, 3);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(104, 26);
-            this.btnReset.TabIndex = 10;
-            this.btnReset.Text = "Reset mật khẩu";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReload_Click);
+            this.tpDanhMucMon.Controls.Add(this.dtgvDanhMucMon);
+            this.tpDanhMucMon.Controls.Add(this.label4);
+            this.tpDanhMucMon.Controls.Add(this.panel1);
+            this.tpDanhMucMon.Controls.Add(this.grPanel1);
+            this.tpDanhMucMon.Location = new System.Drawing.Point(4, 22);
+            this.tpDanhMucMon.Name = "tpDanhMucMon";
+            this.tpDanhMucMon.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDanhMucMon.Size = new System.Drawing.Size(923, 0);
+            this.tpDanhMucMon.TabIndex = 1;
+            this.tpDanhMucMon.Text = "Danh mục món";
+            this.tpDanhMucMon.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // dtgvDanhMucMon
             // 
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(434, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(78, 26);
-            this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.dtgvDanhMucMon.AllowUserToAddRows = false;
+            this.dtgvDanhMucMon.AllowUserToDeleteRows = false;
+            this.dtgvDanhMucMon.AutoGenerateContextFilters = true;
+            this.dtgvDanhMucMon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDanhMucMon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dtgvDanhMucMon.DateWithTime = false;
+            this.dtgvDanhMucMon.Location = new System.Drawing.Point(6, 154);
+            this.dtgvDanhMucMon.Name = "dtgvDanhMucMon";
+            this.dtgvDanhMucMon.ReadOnly = true;
+            this.dtgvDanhMucMon.RowHeadersVisible = false;
+            this.dtgvDanhMucMon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvDanhMucMon.Size = new System.Drawing.Size(910, 351);
+            this.dtgvDanhMucMon.TabIndex = 20;
+            this.dtgvDanhMucMon.TimeFilter = false;
+            this.dtgvDanhMucMon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDanhMucMon_CellClick);
             // 
-            // btnCancel
+            // dataGridViewTextBoxColumn1
             // 
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(353, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(78, 26);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "maDanhMucMon";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã danh mục món";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 22;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // btnSave
+            // dataGridViewTextBoxColumn2
             // 
-            this.btnSave.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSave.Location = new System.Drawing.Point(272, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(78, 26);
-            this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "tenDanhMucMon";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tên danh mục món";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 22;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // btnEdit
+            // label4
             // 
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnEdit.Location = new System.Drawing.Point(84, 3);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(78, 26);
-            this.btnEdit.TabIndex = 9;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.label4.AutoSize = true;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label4.Location = new System.Drawing.Point(284, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(369, 47);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Quản lý danh mục món";
             // 
-            // btnAdd
+            // panel1
             // 
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(78, 26);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnDelete1);
+            this.panel1.Controls.Add(this.btnCancel1);
+            this.panel1.Controls.Add(this.btnSave1);
+            this.panel1.Controls.Add(this.btnEdit1);
+            this.panel1.Controls.Add(this.btnAdd1);
+            this.panel1.Location = new System.Drawing.Point(257, 109);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(411, 39);
+            this.panel1.TabIndex = 19;
             // 
-            // grPanel
+            // btnDelete1
             // 
-            this.grPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.grPanel.Controls.Add(this.radioPhucVu);
-            this.grPanel.Controls.Add(this.radioThuNgan);
-            this.grPanel.Controls.Add(this.radioQuanKho);
-            this.grPanel.Controls.Add(this.radioQuanTriVien);
-            this.grPanel.Controls.Add(this.radioOngChu);
-            this.grPanel.Controls.Add(this.txtDisplayName);
-            this.grPanel.Controls.Add(this.txtUserName);
-            this.grPanel.Controls.Add(this.label6);
-            this.grPanel.Controls.Add(this.label3);
-            this.grPanel.Controls.Add(this.label2);
-            this.grPanel.Location = new System.Drawing.Point(9, 94);
-            this.grPanel.Name = "grPanel";
-            this.grPanel.Size = new System.Drawing.Size(910, 78);
-            this.grPanel.TabIndex = 9;
+            this.btnDelete1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnDelete1.Location = new System.Drawing.Point(327, 3);
+            this.btnDelete1.Name = "btnDelete1";
+            this.btnDelete1.Size = new System.Drawing.Size(78, 26);
+            this.btnDelete1.TabIndex = 13;
+            this.btnDelete1.Text = "Delete";
+            this.btnDelete1.UseVisualStyleBackColor = true;
+            this.btnDelete1.Click += new System.EventHandler(this.btnDelete1_Click);
             // 
-            // radioPhucVu
+            // btnCancel1
             // 
-            this.radioPhucVu.AutoSize = true;
-            this.radioPhucVu.Location = new System.Drawing.Point(666, 46);
-            this.radioPhucVu.Name = "radioPhucVu";
-            this.radioPhucVu.Size = new System.Drawing.Size(65, 17);
-            this.radioPhucVu.TabIndex = 7;
-            this.radioPhucVu.TabStop = true;
-            this.radioPhucVu.Text = "Phục vụ";
-            this.radioPhucVu.UseVisualStyleBackColor = true;
+            this.btnCancel1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnCancel1.Location = new System.Drawing.Point(246, 3);
+            this.btnCancel1.Name = "btnCancel1";
+            this.btnCancel1.Size = new System.Drawing.Size(78, 26);
+            this.btnCancel1.TabIndex = 12;
+            this.btnCancel1.Text = "Cancel";
+            this.btnCancel1.UseVisualStyleBackColor = true;
+            this.btnCancel1.Click += new System.EventHandler(this.btnCancel1_Click);
             // 
-            // radioThuNgan
+            // btnSave1
             // 
-            this.radioThuNgan.AutoSize = true;
-            this.radioThuNgan.Location = new System.Drawing.Point(548, 46);
-            this.radioThuNgan.Name = "radioThuNgan";
-            this.radioThuNgan.Size = new System.Drawing.Size(71, 17);
-            this.radioThuNgan.TabIndex = 6;
-            this.radioThuNgan.TabStop = true;
-            this.radioThuNgan.Text = "Thu ngân";
-            this.radioThuNgan.UseVisualStyleBackColor = true;
+            this.btnSave1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnSave1.Location = new System.Drawing.Point(165, 3);
+            this.btnSave1.Name = "btnSave1";
+            this.btnSave1.Size = new System.Drawing.Size(78, 26);
+            this.btnSave1.TabIndex = 11;
+            this.btnSave1.Text = "Save";
+            this.btnSave1.UseVisualStyleBackColor = true;
+            this.btnSave1.Click += new System.EventHandler(this.btnSave1_Click);
             // 
-            // radioQuanKho
+            // btnEdit1
             // 
-            this.radioQuanKho.AutoSize = true;
-            this.radioQuanKho.Location = new System.Drawing.Point(429, 46);
-            this.radioQuanKho.Name = "radioQuanKho";
-            this.radioQuanKho.Size = new System.Drawing.Size(72, 17);
-            this.radioQuanKho.TabIndex = 5;
-            this.radioQuanKho.TabStop = true;
-            this.radioQuanKho.Text = "Quản kho";
-            this.radioQuanKho.UseVisualStyleBackColor = true;
+            this.btnEdit1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnEdit1.Location = new System.Drawing.Point(84, 3);
+            this.btnEdit1.Name = "btnEdit1";
+            this.btnEdit1.Size = new System.Drawing.Size(78, 26);
+            this.btnEdit1.TabIndex = 9;
+            this.btnEdit1.Text = "Edit";
+            this.btnEdit1.UseVisualStyleBackColor = true;
+            this.btnEdit1.Click += new System.EventHandler(this.btnEdit1_Click);
             // 
-            // radioQuanTriVien
+            // btnAdd1
             // 
-            this.radioQuanTriVien.AutoSize = true;
-            this.radioQuanTriVien.Location = new System.Drawing.Point(297, 46);
-            this.radioQuanTriVien.Name = "radioQuanTriVien";
-            this.radioQuanTriVien.Size = new System.Drawing.Size(85, 17);
-            this.radioQuanTriVien.TabIndex = 4;
-            this.radioQuanTriVien.TabStop = true;
-            this.radioQuanTriVien.Text = "Quản trị viên";
-            this.radioQuanTriVien.UseVisualStyleBackColor = true;
+            this.btnAdd1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnAdd1.Location = new System.Drawing.Point(3, 3);
+            this.btnAdd1.Name = "btnAdd1";
+            this.btnAdd1.Size = new System.Drawing.Size(78, 26);
+            this.btnAdd1.TabIndex = 8;
+            this.btnAdd1.Text = "Add";
+            this.btnAdd1.UseVisualStyleBackColor = true;
+            this.btnAdd1.Click += new System.EventHandler(this.btnAdd1_Click);
             // 
-            // radioOngChu
+            // grPanel1
             // 
-            this.radioOngChu.AutoSize = true;
-            this.radioOngChu.Location = new System.Drawing.Point(184, 46);
-            this.radioOngChu.Name = "radioOngChu";
-            this.radioOngChu.Size = new System.Drawing.Size(66, 17);
-            this.radioOngChu.TabIndex = 3;
-            this.radioOngChu.TabStop = true;
-            this.radioOngChu.Text = "Ông chủ";
-            this.radioOngChu.UseVisualStyleBackColor = true;
+            this.grPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grPanel1.Controls.Add(this.txtTenDanhMucMon);
+            this.grPanel1.Controls.Add(this.txtMaDanhMucMon);
+            this.grPanel1.Controls.Add(this.label5);
+            this.grPanel1.Controls.Add(this.label8);
+            this.grPanel1.Location = new System.Drawing.Point(6, 59);
+            this.grPanel1.Name = "grPanel1";
+            this.grPanel1.Size = new System.Drawing.Size(910, 44);
+            this.grPanel1.TabIndex = 18;
             // 
-            // txtDisplayName
+            // txtTenDanhMucMon
             // 
-            this.txtDisplayName.Location = new System.Drawing.Point(533, 10);
-            this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(370, 20);
-            this.txtDisplayName.TabIndex = 2;
+            this.txtTenDanhMucMon.Location = new System.Drawing.Point(533, 10);
+            this.txtTenDanhMucMon.Name = "txtTenDanhMucMon";
+            this.txtTenDanhMucMon.Size = new System.Drawing.Size(370, 20);
+            this.txtTenDanhMucMon.TabIndex = 2;
             // 
-            // txtUserName
+            // txtMaDanhMucMon
             // 
-            this.txtUserName.Location = new System.Drawing.Point(100, 8);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(218, 20);
-            this.txtUserName.TabIndex = 1;
-            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
+            this.txtMaDanhMucMon.Location = new System.Drawing.Point(121, 8);
+            this.txtMaDanhMucMon.Name = "txtMaDanhMucMon";
+            this.txtMaDanhMucMon.ReadOnly = true;
+            this.txtMaDanhMucMon.Size = new System.Drawing.Size(218, 20);
+            this.txtMaDanhMucMon.TabIndex = 1;
             // 
-            // label6
+            // label5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(452, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Tên hiển thị:";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label5.Location = new System.Drawing.Point(413, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Tên danh mục món:";
             // 
-            // label3
+            // label8
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label3.Location = new System.Drawing.Point(72, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Loại tài khoản:";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label8.Location = new System.Drawing.Point(3, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 15);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Mã danh mục món:";
             // 
-            // label2
+            // tabPage1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(3, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tên đăng nhập:";
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(923, 0);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // userName
             // 
-            this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(281, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(347, 47);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Phân quyền tài khoản";
-            // 
-            // dtgvAccount
-            // 
-            this.dtgvAccount.AllowUserToAddRows = false;
-            this.dtgvAccount.AllowUserToDeleteRows = false;
-            this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvAccount.Location = new System.Drawing.Point(12, 223);
-            this.dtgvAccount.Name = "dtgvAccount";
-            this.dtgvAccount.ReadOnly = true;
-            this.dtgvAccount.RowTemplate.Height = 25;
-            this.dtgvAccount.Size = new System.Drawing.Size(910, 301);
-            this.dtgvAccount.TabIndex = 10;
-            this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvOrder_CellClick);
+            this.userName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.userName.DataPropertyName = "userName";
+            this.userName.HeaderText = "Tên đăng nhập";
+            this.userName.MinimumWidth = 22;
+            this.userName.Name = "userName";
+            this.userName.ReadOnly = true;
+            this.userName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // errorProviderUserName
             // 
             this.errorProviderUserName.ContainerControl = this;
             // 
+            // nameRole
+            // 
+            this.nameRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameRole.DataPropertyName = "nameRole";
+            this.nameRole.HeaderText = "Loại tài khoản";
+            this.nameRole.MinimumWidth = 22;
+            this.nameRole.Name = "nameRole";
+            this.nameRole.ReadOnly = true;
+            this.nameRole.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // paneltrangcon
+            // 
+            this.paneltrangcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.paneltrangcon.BackgroundImage = global::restaurant_management.Properties.Resources._12508948_1670998316473982_4851468845388207905_n;
+            this.paneltrangcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.paneltrangcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paneltrangcon.Location = new System.Drawing.Point(0, 0);
+            this.paneltrangcon.Name = "paneltrangcon";
+            this.paneltrangcon.Size = new System.Drawing.Size(931, 536);
+            this.paneltrangcon.TabIndex = 4;
+            // 
             // frmThietLap
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(931, 536);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.grPanel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtgvAccount);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.paneltrangcon);
             this.Name = "frmThietLap";
             this.Text = "Thiết lập";
-            this.Load += new System.EventHandler(this.OrderForm_Load);
-            this.panel2.ResumeLayout(false);
-            this.grPanel.ResumeLayout(false);
-            this.grPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
+            this.Load += new System.EventHandler(this.frmThietLap_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tpDanhMucMon.ResumeLayout(false);
+            this.tpDanhMucMon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhMucMon)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.grPanel1.ResumeLayout(false);
+            this.grPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Panel grPanel;
-        private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dtgvAccount;
-        private System.Windows.Forms.RadioButton radioPhucVu;
-        private System.Windows.Forms.RadioButton radioThuNgan;
-        private System.Windows.Forms.RadioButton radioQuanKho;
-        private System.Windows.Forms.RadioButton radioQuanTriVien;
-        private System.Windows.Forms.RadioButton radioOngChu;
-        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpTaiKhoan;
+        private System.Windows.Forms.TabPage tpDanhMucMon;
+        private ADGV.AdvancedDataGridView dtgvDanhMucMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnDelete1;
+        private System.Windows.Forms.Button btnCancel1;
+        private System.Windows.Forms.Button btnSave1;
+        private System.Windows.Forms.Button btnEdit1;
+        private System.Windows.Forms.Button btnAdd1;
+        private System.Windows.Forms.Panel grPanel1;
+        private System.Windows.Forms.TextBox txtTenDanhMucMon;
+        private System.Windows.Forms.TextBox txtMaDanhMucMon;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userName;
         private System.Windows.Forms.ErrorProvider errorProviderUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameRole;
+        private System.Windows.Forms.Panel paneltrangcon;
     }
 }
