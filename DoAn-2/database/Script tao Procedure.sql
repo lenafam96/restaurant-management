@@ -112,7 +112,13 @@ GO
 CREATE PROC USP_GetAccountList
 AS
 BEGIN
-    SELECT * FROM dbo.TaiKhoan WHERE role NOT LIKE -1
+    SELECT userName,
+           hoTen,
+           nameRole 
+	FROM dbo.TaiKhoan 
+	INNER JOIN dbo.NhanVien ON NhanVien.maNhanVien = TaiKhoan.maNhanVien
+	INNER JOIN dbo.PhanQuyen ON PhanQuyen.role = TaiKhoan.role
+	WHERE TaiKhoan.role NOT LIKE -1
 END
 GO
 
@@ -216,7 +222,24 @@ GO
 CREATE PROC USP_GetListDanhMucMon
 AS
 BEGIN
-    SELECT * FROM dbo.DanhMucMon WHERE xoa = 0
+    SELECT maDanhMucMon,
+           tenDanhMucMon
+	FROM dbo.DanhMucMon WHERE xoa = 0
+END
+GO
+
+--2.5. Lấy thông tin danh mục món theo tên danh mục món
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetDanhMucMonByName')
+     DROP PROC USP_GetDanhMucMonByName
+GO
+
+CREATE PROC USP_GetDanhMucMonByName
+@tenDanhMucMon NVARCHAR(50)
+AS
+BEGIN
+    SELECT maDanhMucMon,
+           tenDanhMucMon
+    FROM dbo.DanhMucMon WHERE xoa = 0 AND tenDanhMucMon = @tenDanhMucMon
 END
 GO
 
@@ -244,16 +267,548 @@ BEGIN
 END
 GO
 
+--3.2. Cập nhật món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateMonAn')
+	DROP PROC USP_UpdateMonAn
+GO
+
+CREATE PROC USP_UpdateMonAn
+@maMonAn INT, @tenMonAn NVARCHAR(50), @gia INT, @maDanhMuc int
+AS
+BEGIN
+    UPDATE dbo.MonAn SET tenMonAn = @tenMonAn, gia = @gia, maDanhMucMon = @maDanhMuc WHERE maMonAn = @maMonAn
+END
+GO
+
+--3.3. Xoá món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteMonAn')
+	DROP PROC USP_DeleteMonAn
+GO
+
+CREATE PROC USP_DeleteMonAn
+@maMonAn INT
+AS
+BEGIN
+    UPDATE dbo.MonAn SET xoa = 1 WHERE maMonAn = @maMonAn
+END
+GO
+
+--3.4. Tìm kiếm món ăn theo tên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetMonAnByName')
+	DROP PROC USP_GetMonAnByName
+GO
+
+CREATE PROC USP_GetMonAnByName
+@tenMonAn NVARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM dbo.MonAn WHERE tenMonAn = @tenMonAn AND xoa = 0
+END
+GO
+
 --3.5. Liệt kê danh sách món ăn theo danh mục món
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListMonAnByMaDanhMuc')
+	DROP PROC USP_GetListMonAnByMaDanhMuc
+GO
+
+CREATE PROC USP_GetListMonAnByMaDanhMuc
+@maDanhMucMon INT
+AS
+BEGIN
+    SELECT maMonAn,
+           tenMonAn,
+           gia,
+           maDanhMucMon
+	FROM dbo.MonAn WHERE maDanhMucMon = @maDanhMucMon AND xoa = 0 
+END
+GO
+
+--3.8. Liệt kê danh sách món ăn
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListMonAn')
 	DROP PROC USP_GetListMonAn
 GO
 
 CREATE PROC USP_GetListMonAn
-@maDanhMucMon INT
 AS
 BEGIN
-    SELECT * FROM dbo.MonAn WHERE maDanhMucMon = @maDanhMucMon AND xoa = 0
+    SELECT maMonAn,
+           tenMonAn,
+           gia,
+           tenDanhMucMon
+	FROM dbo.MonAn 
+	INNER JOIN dbo.DanhMucMon ON DanhMucMon.maDanhMucMon = MonAn.maDanhMucMon
+	WHERE MonAn.xoa = 0
+END
+GO
+
+--4. Quản lý thực phẩm
+--4.1. Thêm thực phẩm mới
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertThucPham')
+     DROP PROC USP_InsertThucPham
+GO
+
+CREATE PROC USP_InsertThucPham
+@tenThucPham NVARCHAR(50), @donViTinh NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO dbo.ThucPham
+    (
+        tenThucPham,
+        donViTinh
+    )
+    VALUES
+    (   @tenThucPham, -- tenThucPham - nvarchar(50)
+        @donViTinh -- donViTinh - nvarchar(50)
+        )
+END
+GO
+
+--4.2. Cập nhật thông tin thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateThucPham')
+     DROP PROC USP_UpdateThucPham
+GO
+
+CREATE PROC USP_UpdateThucPham
+@maThucPham INT, @tenThucPham NVARCHAR(50), @donViTinh NVARCHAR(50)
+AS
+BEGIN
+    UPDATE dbo.ThucPham SET tenThucPham = @tenThucPham, donViTinh = @donViTinh WHERE maThucPham = @maThucPham
+END
+GO
+
+--4.3. Xoá thông tin thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteThucPham')
+     DROP PROC USP_DeleteThucPham
+GO
+
+CREATE PROC USP_DeleteThucPham
+@maThucPham INT
+AS
+BEGIN
+    UPDATE dbo.ThucPham SET xoa = 1 WHERE maThucPham = @maThucPham
+END
+GO
+
+--4.4. Tìm kiếm thông tin thực phẩm theo tên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_SearchThucPham')
+     DROP PROC USP_SearchThucPham
+GO
+
+CREATE PROC USP_SearchThucPham
+@textSearch NVARCHAR(50)
+AS
+BEGIN
+    SELECT maThucPham,
+           tenThucPham,
+           donViTinh,
+           tonKho
+    FROM dbo.ThucPham WHERE (dbo.fuConvertToUnsign(tenThucPham) LIKE '%'+dbo.fuConvertToUnsign(@textSearch)+'%') AND xoa = 0
+END
+GO
+
+--4.6. Lấy danh sách thông tin thực phẩm theo mã món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListThucPhamByMaMonAn')
+     DROP PROC USP_GetListThucPhamByMaMonAn
+GO
+
+CREATE PROC USP_GetListThucPhamByMaMonAn
+@maMonAn INT
+AS
+BEGIN
+    SELECT tenThucPham,
+		   soLuong,	
+           donViTinh
+    FROM dbo.ChiTietMonAn
+	INNER JOIN dbo.ThucPham ON ThucPham.maThucPham = ChiTietMonAn.maThucPham
+	WHERE maMonAn = @maMonAn
+END
+GO
+
+--4.9. Lấy danh sách thông tin thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListThucPham')
+     DROP PROC USP_GetListThucPham
+GO
+
+CREATE PROC USP_GetListThucPham
+AS
+BEGIN
+    SELECT maThucPham,
+           tenThucPham,
+           donViTinh,
+           tonKho
+    FROM dbo.ThucPham WHERE xoa = 0
+END
+GO
+
+--4.10. Lấy thông tin thực phẩm theo tên thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetThucPhamByName')
+     DROP PROC USP_GetThucPhamByName
+GO
+
+CREATE PROC USP_GetThucPhamByName
+@tenThucPham NVARCHAR(50)
+AS
+BEGIN
+    SELECT maThucPham,
+           tenThucPham,
+           donViTinh,
+           tonKho
+    FROM dbo.ThucPham WHERE xoa = 0 AND tenThucPham = @tenThucPham
+END
+GO
+
+--4.11. Lấy danh sách đơn vị tính
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListUnit')
+     DROP PROC USP_GetListUnit
+GO
+
+CREATE PROC USP_GetListUnit
+AS
+BEGIN
+    SELECT donViTinh FROM dbo.ThucPham
+	GROUP BY donViTinh
+END
+GO
+
+--4.12. Cập nhật số lượng thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateSoLuongThucPham')
+     DROP PROC USP_UpdateSoLuongThucPham
+GO
+
+CREATE PROC USP_UpdateSoLuongThucPham
+@maThucPham INT, @soLuong INT 
+AS
+BEGIN
+    UPDATE dbo.ThucPham SET tonKho -= @soLuong WHERE maThucPham = @maThucPham
+END
+GO
+
+--4.13. Lấy thông tin thực phẩm theo mã thực phẩm
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetThucPhamByMaThucPham')
+     DROP PROC USP_GetThucPhamByMaThucPham
+GO
+
+CREATE PROC USP_GetThucPhamByMaThucPham
+@maThucPham INT
+AS
+BEGIN
+    SELECT * FROM dbo.ThucPham WHERE maThucPham = @maThucPham AND xoa = 0
+END
+GO
+
+--5. Quản lý nhà cung cấp
+--5.1. Thêm nhà cung cấp mới
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertNhaCungCap')
+     DROP PROC USP_InsertNhaCungCap
+GO
+
+CREATE PROC USP_InsertNhaCungCap
+@tenNhaCungCap NVARCHAR(50), @diaChi NVARCHAR(200), @sdt VARCHAR(15), @email VARCHAR(50)
+AS
+BEGIN
+    INSERT INTO dbo.NhaCungCap
+    (
+        tenNhaCungCap,
+        diaChi,
+        sdt,
+        email
+    )
+    VALUES
+    (   N'', -- tenNhaCungCap - nvarchar(50)
+        N'', -- diaChi - nvarchar(200)
+        '',  -- sdt - varchar(15)
+        ''  -- email - varchar(50)
+        )
+END
+GO
+
+--5.2. Cập nhật thông tin nhà cung cấp
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateNhaCungCap')
+     DROP PROC USP_UpdateNhaCungCap
+GO
+
+CREATE PROC USP_UpdateNhaCungCap
+@maNhaCungCap INT, @tenNhaCungCap NVARCHAR(50), @diaChi NVARCHAR(200), @sdt VARCHAR(15), @email VARCHAR(50)
+AS
+BEGIN
+    UPDATE dbo.NhaCungCap SET tenNhaCungCap = @tenNhaCungCap, diaChi = @diaChi, sdt = @sdt, email = @email WHERE maNhaCungCap = @maNhaCungCap
+END
+GO
+
+--5.3. Xoá thông tin nhà cung cấp
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteNhaCungCap')
+     DROP PROC USP_DeleteNhaCungCap
+GO
+
+CREATE PROC USP_DeleteNhaCungCap
+@maNhaCungCap INT
+AS
+BEGIN
+    UPDATE dbo.NhaCungCap SET xoa = 1 WHERE maNhaCungCap = @maNhaCungCap
+END
+GO
+
+--5.5. Lấy danh sách nhà cung cấp
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListNhaCungCap')
+     DROP PROC USP_GetListNhaCungCap
+GO
+
+CREATE PROC USP_GetListNhaCungCap
+AS
+BEGIN
+    SELECT maNhaCungCap,
+           tenNhaCungCap,
+           diaChi,
+           sdt,
+           email
+    FROM dbo.NhaCungCap WHERE xoa = 0
+END
+GO
+
+--5.6. Tìm kiếm thông tin nhà cung cấp theo tên hoặc sđt
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_SearchNhaCungCap')
+     DROP PROC USP_SearchNhaCungCap
+GO
+
+CREATE PROC USP_SearchNhaCungCap
+@textSearch NVARCHAR(50)
+AS
+BEGIN
+    SELECT maNhaCungCap,
+           tenNhaCungCap,
+           diaChi,
+           sdt,
+           email
+	FROM dbo.NhaCungCap WHERE ((sdt LIKE '%'+@textSearch+'%') OR (dbo.fuConvertToUnsign(tenNhaCungCap) LIKE '%'+dbo.fuConvertToUnsign(@textSearch)+'%')) AND xoa = 0
+END
+GO
+
+--6. Quản lý phiếu nhập
+--6.1. Thêm phiếu nhập mới
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertPhieuNhap')
+     DROP PROC USP_InsertPhieuNhap
+GO
+
+CREATE PROC USP_InsertPhieuNhap
+@maNhaCungCap INT, @ngayNhap DATE
+AS
+BEGIN
+    INSERT INTO dbo.PhieuNhap
+    (
+        maNhaCungCap,
+        ngayNhap,
+		tongTien
+    )
+    VALUES
+    (   @maNhaCungCap,         -- maNhaCungCap - int
+        @ngayNhap, -- ngayNhap - date
+		0 -- tongTien - int
+        )
+END
+GO
+
+--6.2. Cập nhật thông tin phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdatePhieuNhap')
+     DROP PROC USP_UpdatePhieuNhap
+GO
+
+CREATE PROC USP_UpdatePhieuNhap
+@maPhieuNhap INT, @maNhaCungCap INT, @ngayNhap DATE
+AS
+BEGIN
+    UPDATE dbo.PhieuNhap SET maNhaCungCap = @maNhaCungCap, ngayNhap = @ngayNhap WHERE maPhieuNhap = @maPhieuNhap
+END
+GO
+
+--6.3. Xoá thông tin phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeletePhieuNhap')
+     DROP PROC USP_DeletePhieuNhap
+GO
+
+CREATE PROC USP_DeletePhieuNhap
+@maPhieuNhap INT
+AS
+BEGIN
+    UPDATE dbo.PhieuNhap SET xoa = 1 WHERE maPhieuNhap = @maPhieuNhap
+END
+GO
+
+--6.6. Lấy danh sách phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListPhieuNhap')
+     DROP PROC USP_GetListPhieuNhap
+GO
+
+CREATE PROC USP_GetListPhieuNhap
+AS
+BEGIN
+    SELECT maPhieuNhap,
+           tenNhaCungCap,
+           ngayNhap,
+           tongTien
+	FROM dbo.PhieuNhap 
+	INNER JOIN dbo.NhaCungCap ON NhaCungCap.maNhaCungCap = PhieuNhap.maNhaCungCap
+	WHERE PhieuNhap.xoa = 0
+END
+GO
+
+--6.7. Cập nhật tổng tiền phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateTongTienPhieuNhap')
+     DROP PROC USP_UpdateTongTienPhieuNhap
+GO
+
+CREATE PROC USP_UpdateTongTienPhieuNhap
+@maPhieuNhap INT, @tongTien INT 
+AS
+BEGIN
+    UPDATE dbo.PhieuNhap SET tongTien = @tongTien WHERE maPhieuNhap = @maPhieuNhap
+END
+GO
+
+--7. Quản lý chi tiết món ăn
+--7.1. Thêm chi tiết món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertChiTietMonAn')
+	DROP PROC USP_InsertChiTietMonAn
+GO
+
+CREATE PROC USP_InsertChiTietMonAn
+@maMonAn INT, @maThucPham INT, @soLuong INT 
+AS
+BEGIN
+	INSERT INTO dbo.ChiTietMonAn
+	(
+		maMonAn,
+		maThucPham,
+		soLuong
+	)
+	VALUES
+	(   @maMonAn, -- maMonAn - int
+		@maThucPham, -- maThucPham - int
+		@soLuong  -- soLuong - int
+		)
+END
+GO
+
+--7.2. Cập nhật chi tiết món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateChiTietMonAn')
+	DROP PROC USP_UpdateChiTietMonAn
+GO
+
+CREATE PROC USP_UpdateChiTietMonAn
+@maMonAn INT, @maThucPham INT, @soLuong INT 
+AS
+BEGIN
+	UPDATE dbo.ChiTietMonAn SET soLuong = @soLuong WHERE maMonAn = @maMonAn AND maThucPham = @maThucPham
+END
+GO
+
+--7.4. Lấy thông tin chi tiết món ăn theo mã món ăn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListThucPhamByMaMonAn')
+	DROP PROC USP_GetListThucPhamByMaMonAn
+GO
+
+CREATE PROC USP_GetListThucPhamByMaMonAn
+@maMonAn INT
+AS
+BEGIN
+    SELECT ThucPham.maThucPham,
+		   tenThucPham,
+           soLuong,
+           donViTinh
+	FROM dbo.ChiTietMonAn
+	INNER JOIN dbo.ThucPham ON ThucPham.maThucPham = ChiTietMonAn.maThucPham
+	WHERE maMonAn = @maMonAn
+END
+GO
+
+--7.5. Kiểm tra thực phẩm có trong món ăn chưa
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_CheckThucPhamTrongMonAn')
+	DROP PROC USP_CheckThucPhamTrongMonAn
+GO
+
+CREATE PROC USP_CheckThucPhamTrongMonAn
+@maMonAn INT, @maThucPham INT 
+AS
+BEGIN
+    SELECT * FROM dbo.ChiTietMonAn WHERE maMonAn = @maMonAn AND maThucPham = @maThucPham
+END
+GO
+
+--8. Quản lý chi tiết phiếu nhập
+--8.1. Thêm chi tiết phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertChiTietPhieuNhap')
+    DROP PROC USP_InsertChiTietPhieuNhap
+GO
+
+CREATE PROC USP_InsertChiTietPhieuNhap
+@maPhieuNhap INT, @maThucPham INT, @soLuong INT, @gia INT  
+AS
+BEGIN
+    INSERT INTO dbo.ChiTietPhieuNhap
+    (
+        maPhieuNhap,
+        maThucPham,
+        soLuong,
+        gia
+    )
+    VALUES
+    (   @maPhieuNhap, -- maPhieuNhap - int
+        @maThucPham, -- maThucPham - int
+        @soLuong, -- soLuong - int
+        @gia  -- gia - int
+        )
+END
+GO
+
+--8.2. Cập nhật chi tiết phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateChiTietPhieuNhap')
+    DROP PROC USP_UpdateChiTietPhieuNhap
+GO
+
+CREATE PROC USP_UpdateChiTietPhieuNhap
+@maPhieuNhap INT, @maThucPham INT, @soLuong INT, @gia INT
+AS
+BEGIN
+    UPDATE dbo.ChiTietPhieuNhap SET soLuong = @soLuong, gia = @gia WHERE maPhieuNhap = @maPhieuNhap AND maThucPham = @maThucPham
+END
+GO
+
+--8.4. Lấy thông tin chi tiết phiếu nhập theo mã phiếu nhập
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListThucPhamByMaPhieuNhap')
+    DROP PROC USP_GetListThucPhamByMaPhieuNhap
+GO
+
+CREATE PROC USP_GetListThucPhamByMaPhieuNhap
+@maPhieuNhap INT
+AS
+BEGIN
+    SELECT ThucPham.maThucPham,
+           tenThucPham,
+           soLuong,
+           donViTinh,
+		   gia
+    FROM dbo.ChiTietPhieuNhap
+    INNER JOIN dbo.ThucPham ON ThucPham.maThucPham = ChiTietPhieuNhap.maThucPham
+    WHERE maPhieuNhap = @maPhieuNhap
+END
+GO
+
+--8.5. Kiểm tra thực phẩm có trong phiếu nhập chưa
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_CheckThucPhamTrongPhieuNhap')
+    DROP PROC USP_CheckThucPhamTrongPhieuNhap
+GO
+
+CREATE PROC USP_CheckThucPhamTrongPhieuNhap
+@maPhieuNhap INT, @maThucPham INT 
+AS
+BEGIN
+    SELECT ThucPham.maThucPham,
+           tenThucPham,
+           soLuong,
+		   donViTinh,
+           gia 
+	FROM dbo.ChiTietPhieuNhap 
+	INNER JOIN dbo.ThucPham ON ThucPham.maThucPham = ChiTietPhieuNhap.maThucPham
+	WHERE maPhieuNhap = @maPhieuNhap AND ChiTietPhieuNhap.maThucPham = @maThucPham
 END
 GO
 
@@ -320,7 +875,13 @@ CREATE PROC USP_SearchKhachHang
 @textSearch NVARCHAR(50)
 AS
 BEGIN
-    SELECT * FROM dbo.KhachHang WHERE ((sdt LIKE '%'+@textSearch+'%') OR (dbo.fuConvertToUnsign(hoTen) LIKE '%'+dbo.fuConvertToUnsign(@textSearch)+'%')) AND xoa = 0 AND maKhachHang NOT LIKE 1
+    SELECT maKhachHang,
+           hoTen,
+           ngaySinh,
+           gioiTinh,
+           sdt,
+           diemTichLuy
+	FROM dbo.KhachHang WHERE ((sdt LIKE '%'+@textSearch+'%') OR (dbo.fuConvertToUnsign(hoTen) LIKE '%'+dbo.fuConvertToUnsign(@textSearch)+'%')) AND xoa = 0 AND maKhachHang NOT LIKE 1
 END
 GO
 
@@ -345,7 +906,28 @@ GO
 CREATE PROC USP_GetListKhachHang
 AS
 BEGIN
-    SELECT * FROM dbo.KhachHang WHERE xoa = 0 AND maKhachHang NOT LIKE 1
+    SELECT maKhachHang,
+           hoTen,
+           ngaySinh,
+           gioiTinh,
+           sdt,
+           diemTichLuy
+	FROM dbo.KhachHang WHERE xoa = 0 AND maKhachHang NOT LIKE 1
+END
+GO
+
+--9.7. Lấy danh sách thông tin khách hàng cho ComboBox
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListKhachHangCmb')
+	DROP PROC USP_GetListKhachHangCmb
+GO
+
+CREATE PROC USP_GetListKhachHangCmb
+AS
+BEGIN
+    SELECT maKhachHang,
+           CASE hoTen WHEN 'Khách vãng lai' THEN N'(Không có)'
+		   ELSE hoTen END AS hoTen
+	FROM dbo.KhachHang WHERE xoa = 0
 END
 GO
 
@@ -377,7 +959,7 @@ BEGIN
 END
 GO
 
---9.2. Cập nhật thông tin Voucher
+--10.2. Cập nhật thông tin Voucher
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateVoucher')
 	DROP PROC USP_UpdateVoucher
 GO
@@ -390,7 +972,7 @@ BEGIN
 END
 GO
 
---9.3. Xoá thông tin voucher
+--10.3. Xoá thông tin voucher
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteVoucher')
 	DROP PROC USP_DeleteVoucher
 GO
@@ -413,7 +995,7 @@ CREATE PROC USP_GetVoucherByID
 @maVoucher INT 
 AS
 BEGIN
-    SELECT * FROM dbo.Voucher WHERE maVoucher = @maVoucher AND xoa = 0
+    SELECT * FROM dbo.Voucher WHERE maVoucher = @maVoucher AND xoa = 0 AND ngayBatDau<=GETDATE() AND ngayKetThuc>=GETDATE()
 END
 GO
 
@@ -434,6 +1016,140 @@ BEGIN
 				WHEN loai = 0 THEN N'Phần trăm'
 			END AS 'loai'
 	FROM dbo.Voucher WHERE xoa = 0 AND maVoucher NOT LIKE 1
+END
+GO
+
+--10.6. Lấy danh sách thông tin voucher cho ComboBox
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListVoucherCmb')
+	DROP PROC USP_GetListVoucherCmb
+GO
+
+CREATE PROC USP_GetListVoucherCmb
+AS
+BEGIN
+    SELECT maVoucher,
+           CASE moTa WHEN '' THEN N'(Không có)' ELSE moTa END AS moTa
+	FROM dbo.Voucher WHERE xoa = 0
+END
+GO
+
+--11. Quản lý nhân viên
+--11.1. Thêm nhân viên mới
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertNhanVien')
+     DROP PROC USP_InsertNhanVien
+GO
+
+CREATE PROC USP_InsertNhanVien
+@hoTen NVARCHAR(50), @ngaySinh DATE, @gioiTinh NVARCHAR(5), @chucVu NVARCHAR(50), @sdt VARCHAR(15), @cccd VARCHAR(15), @luong INT
+AS
+BEGIN
+    INSERT INTO dbo.NhanVien
+    (
+        hoTen,
+        ngaySinh,
+        gioiTinh,
+        chucVu,
+        sdt,
+        cccd,
+        luong
+    )
+    VALUES
+    (   @hoTen,       -- hoTen - nvarchar(50)
+        @ngaySinh, -- ngaySinh - date
+        @gioiTinh,       -- gioiTinh - nvarchar(5)
+        @chucVu,       -- chucVu - nvarchar(50)
+        @sdt,        -- sdt - varchar(15)
+        @cccd,        -- cccd - varchar(15)
+        @luong         -- luong - int
+        )
+END
+GO
+
+--11.2. Cập nhật thông tin nhân viên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateNhanVien')
+     DROP PROC USP_UpdateNhanVien
+GO
+
+CREATE PROC USP_UpdateNhanVien
+@maNhanVien INT, @hoTen NVARCHAR(50), @ngaySinh DATE, @gioiTinh NVARCHAR(5), @chucVu NVARCHAR(50), @sdt VARCHAR(15), @cccd VARCHAR(15), @luong INT
+AS
+BEGIN
+    UPDATE dbo.NhanVien SET hoTen = @hoTen, ngaySinh = @ngaySinh, gioiTinh = @gioiTinh, chucVu = @chucVu, sdt = @sdt, cccd = @cccd, luong = @luong WHERE maNhanVien = @maNhanVien
+END
+GO
+
+--11.3. Xoá thông tin nhân viên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteNhanVien')
+     DROP PROC USP_DeleteNhanVien
+GO
+
+CREATE PROC USP_DeleteNhanVien
+@maNhanVien INT
+AS
+BEGIN
+    UPDATE dbo.NhanVien SET xoa = 1 WHERE maNhanVien = @maNhanVien
+END
+GO
+
+--11.4. Tìm kiếm thông tin nhân viên theo tên hoặc sđt
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_SearchNhanVien')
+     DROP PROC USP_SearchNhanVien
+GO
+
+CREATE PROC USP_SearchNhanVien
+@textSearch NVARCHAR(50)
+AS
+BEGIN
+    SELECT maNhanVien,
+           hoTen,
+           ngaySinh,
+           gioiTinh,
+           chucVu,
+           sdt,
+           cccd,
+           luong
+	FROM dbo.NhanVien WHERE ((sdt LIKE '%'+@textSearch+'%') OR (dbo.fuConvertToUnsign(hoTen) LIKE '%'+dbo.fuConvertToUnsign(@textSearch)+'%')) AND xoa = 0
+END
+GO
+
+--11.5. Lấy danh sách thông tin nhân viên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListNhanVien')
+     DROP PROC USP_GetListNhanVien
+GO
+
+CREATE PROC USP_GetListNhanVien
+AS
+BEGIN
+    SELECT maNhanVien,
+           hoTen,
+           ngaySinh,
+           gioiTinh,
+           chucVu,
+           sdt,
+           cccd,
+           luong
+	FROM dbo.NhanVien WHERE xoa = 0
+END
+GO
+
+--11.6. Lấy thông tin nhân viên bằng mã nhân viên
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetNhanVienByID')
+     DROP PROC USP_GetNhanVienByID
+GO
+
+CREATE PROC USP_GetNhanVienByID
+@maNhanVien INT 
+AS
+BEGIN
+    SELECT maNhanVien,
+		   hoTen,
+           ngaySinh,
+           gioiTinh,
+           chucVu,
+           sdt,
+           cccd,
+           luong
+	FROM dbo.NhanVien WHERE xoa = 0 AND maNhanVien = @maNhanVien
 END
 GO
 
@@ -460,6 +1176,32 @@ BEGIN
 END
 GO
 
+--12.2. Cập nhật thông tin hoá đơn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_UpdateHoaDon')
+	DROP PROC USP_UpdateHoaDon
+GO
+
+CREATE PROC USP_UpdateHoaDon
+@maHoaDon INT, @maNhanVien INT, @ngayTao DATETIME, @ngayThanhToan DATETIME
+AS
+BEGIN
+    UPDATE dbo.HoaDon SET maNhanVien = @maNhanVien, ngayTao = @ngayTao, ngayThanhToan = @ngayThanhToan WHERE maHoaDon = @maHoaDon
+END
+GO
+
+--12.3. Xoá hoá đơn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_DeleteHoaDon')
+	DROP PROC USP_DeleteHoaDon
+GO
+
+CREATE PROC USP_DeleteHoaDon
+@maHoaDon INT
+AS
+BEGIN
+    UPDATE dbo.HoaDon SET trangThai = -1 WHERE maHoaDon = @maHoaDon
+END
+GO
+
 --12.4. Thanh toán hoá đơn
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_ThanhToanHoaDon')
 	DROP PROC USP_ThanhToanHoaDon
@@ -469,7 +1211,7 @@ CREATE PROC USP_ThanhToanHoaDon
 @maHoaDon INT, @maKhachHang INT, @diemCong INT, @diemTru INT, @tongTien INT, @maVoucher INT
 AS
 BEGIN
-    UPDATE dbo.HoaDon SET maKhachHang = @maKhachHang, diemCong = diemCong, diemTru = @diemTru, tongTien = @tongTien, maVoucher = @maVoucher, ngayThanhToan = GETDATE(), trangThai = 1 WHERE maHoaDon = @maHoaDon;
+    UPDATE dbo.HoaDon SET maKhachHang = @maKhachHang, diemCong = @diemCong, diemTru = @diemTru, tongTien = @tongTien, maVoucher = @maVoucher, ngayThanhToan = GETDATE(), trangThai = 1 WHERE maHoaDon = @maHoaDon;
 	UPDATE dbo.KhachHang SET diemTichLuy=diemTichLuy+@diemCong-@diemTru WHERE maKhachHang = @maKhachHang;
 	UPDATE dbo.Ban SET trangThai = 0 WHERE maBan = (SELECT maBan FROM dbo.HoaDon WHERE maHoaDon = @maHoaDon);
 END
@@ -503,6 +1245,65 @@ BEGIN
 END
 GO
 
+--12.8. Lấy tổng số tiền theo ngày trong 30 ngày để vẽ biểu đồ
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetHoaDon30Day')
+	DROP PROC USP_GetHoaDon30Day
+GO
+
+CREATE PROC USP_GetHoaDon30Day
+AS
+BEGIN
+	SELECT CONVERT(DATE,ngayThanhToan) AS [ngay],CONVERT(VARCHAR(5),ngayThanhToan,3) AS [Day], SUM(tongTien) AS [Sum]
+	FROM dbo.HoaDon
+	WHERE ngayThanhToan>DATEADD(DAY,-30,GETDATE()) AND ngayThanhToan<GETDATE()
+	GROUP BY CONVERT(DATE,ngayThanhToan), CONVERT(VARCHAR(5),ngayThanhToan,3)
+	ORDER BY CONVERT(DATE,ngayThanhToan)
+END
+GO
+
+--12.9. Lấy danh sách thông tin hoá đơn theo khoản ngày
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListHoaDonByDateAndPage')
+	DROP PROC USP_GetListHoaDonByDateAndPage
+GO
+
+CREATE PROC USP_GetListHoaDonByDateAndPage
+@dateFrom DATE, @dateTo DATE, @page INT, @pageRows INT
+AS
+BEGIN
+	DECLARE @selectRows INT = @pageRows
+	DECLARE @exceptRows INT = (@page - 1)*@pageRows
+	SELECT TOP(@selectRows) *
+	FROM (SELECT * FROM dbo.ListHoaDon WHERE ngayThanhToan >= @dateFrom AND ngayThanhToan <= @dateTo) AS ListHoaDon
+	WHERE ListHoaDon.maHoaDon NOT IN (SELECT TOP(@exceptRows) ListHoaDon.maHoaDon FROM (SELECT * FROM dbo.ListHoaDon WHERE ngayThanhToan >= @dateFrom AND ngayThanhToan <= @dateTo) AS ListHoaDon)
+END
+GO
+EXEC USP_GetListHoaDonByDateAndPage '2022-3-1' , '2022-6-1' , 1 , 1000
+--12.10. Lấy số lượng hoá đơn theo khoảng ngày
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetNumHoaDonByDate')
+	DROP PROC USP_GetNumHoaDonByDate
+GO
+
+CREATE PROC USP_GetNumHoaDonByDate
+@dateFrom DATE, @dateTo DATE
+AS
+BEGIN
+	SELECT COUNT(*) FROM dbo.HoaDon WHERE ngayThanhToan >= @dateFrom AND ngayThanhToan <= @dateTo
+END
+GO
+
+--12.11. Lấy thông tin hoá đơn theo mã hoá đơn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetHoaDonByMaHoaDon')
+	DROP PROC USP_GetHoaDonByMaHoaDon
+GO
+
+CREATE PROC USP_GetHoaDonByMaHoaDon
+@maHoaDon INT 
+AS
+BEGIN
+	SELECT * FROM dbo.HoaDon WHERE maHoaDon = @maHoaDon
+END
+GO
+
 --13. Quản lý chi tiết hoá đơn
 --13.1. Thêm chi tiết hoá đơn
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_InsertChiTietHoaDon')
@@ -513,17 +1314,17 @@ CREATE PROC USP_InsertChiTietHoaDon
 @maHoaDon INT, @maMonAn INT, @soLuong INT 
 AS
 BEGIN
-    INSERT INTO dbo.ChiTietHoaDon
-    (
-        maHoaDon,
-        maMonAn,
-        soLuong
-    )
-    VALUES
-    (   @maHoaDon, -- maHoaDon - int
-        @maMonAn, -- maMonAn - int
-        @soLuong  -- soLuong - int
-        )
+	INSERT INTO dbo.ChiTietHoaDon
+	(
+		maHoaDon,
+		maMonAn,
+		soLuong
+	)
+	VALUES
+	(   @maHoaDon, -- maHoaDon - int
+		@maMonAn, -- maMonAn - int
+		@soLuong  -- soLuong - int
+		)
 END
 GO
 
@@ -536,11 +1337,16 @@ CREATE PROC USP_UpdateChiTietHoaDon
 @maHoaDon INT, @maMonAn INT, @soLuong INT 
 AS
 BEGIN
-    UPDATE dbo.ChiTietHoaDon SET soLuong += @soLuong WHERE maHoaDon = @maHoaDon AND maMonAn = @maMonAn
+	DECLARE @soLuongOld INT
+	SELECT @soLuongOld = soLuong FROM dbo.ChiTietHoaDon WHERE maHoaDon = @maHoaDon AND maMonAn = @maMonAn
+	IF @soLuongOld + @soLuong > 0
+		UPDATE dbo.ChiTietHoaDon SET soLuong += @soLuong WHERE maHoaDon = @maHoaDon AND maMonAn = @maMonAn
+	ELSE 
+		UPDATE dbo.ChiTietHoaDon SET soLuong = 0 WHERE maHoaDon = @maHoaDon AND maMonAn = @maMonAn
 END
 GO
 
---13.4. Lấy thông tin chi tiết hoá đơn theo mã hoá đơn
+--13.4. Lấy thông tin chi tiết hoá đơn theo mã bàn
 IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListMonAnByMaBan')
 	DROP PROC USP_GetListMonAnByMaBan
 GO
@@ -568,7 +1374,32 @@ CREATE PROC USP_CheckMonAnTrongHoaDon
 @maHoaDon INT, @maMonAn INT 
 AS
 BEGIN
-    SELECT * FROM dbo.ChiTietHoaDon WHERE maHoaDon = @maHoaDon AND maMonAn = @maMonAn
+    SELECT maHoaDon,
+           tenMonAn,
+           soLuong,
+		   gia
+	FROM dbo.ChiTietHoaDon 
+	INNER JOIN dbo.MonAn ON MonAn.maMonAn = ChiTietHoaDon.maMonAn
+	WHERE maHoaDon = @maHoaDon AND ChiTietHoaDon.maMonAn = @maMonAn
+END
+GO
+
+--13.6. Lấy thông tin chi tiết hoá đơn theo mã hoá đơn
+IF EXISTS (SELECT * FROM sys.objects WHERE name = 'USP_GetListMonAnByMaHoaDon')
+	DROP PROC USP_GetListMonAnByMaHoaDon
+GO
+
+CREATE PROC USP_GetListMonAnByMaHoaDon
+@maHoaDon INT
+AS
+BEGIN
+    SELECT tenMonAn,
+           soLuong,
+           gia
+	FROM dbo.ChiTietHoaDon
+	INNER JOIN dbo.HoaDon ON HoaDon.maHoaDon = ChiTietHoaDon.maHoaDon
+	INNER JOIN dbo.MonAn ON MonAn.maMonAn = ChiTietHoaDon.maMonAn
+	WHERE HoaDon.maHoaDon = @maHoaDon
 END
 GO
 

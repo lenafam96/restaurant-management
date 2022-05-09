@@ -39,11 +39,11 @@ namespace restaurant_management.MenuTab
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grPanel = new System.Windows.Forms.Panel();
+            this.txtSDT = new System.Windows.Forms.MaskedTextBox();
             this.radNu = new System.Windows.Forms.RadioButton();
             this.radNam = new System.Windows.Forms.RadioButton();
             this.dtpkNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txtDiemTichLuy = new System.Windows.Forms.TextBox();
-            this.txtSDT = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -177,11 +177,11 @@ namespace restaurant_management.MenuTab
             // grPanel
             // 
             this.grPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grPanel.Controls.Add(this.txtSDT);
             this.grPanel.Controls.Add(this.radNu);
             this.grPanel.Controls.Add(this.radNam);
             this.grPanel.Controls.Add(this.dtpkNgaySinh);
             this.grPanel.Controls.Add(this.txtDiemTichLuy);
-            this.grPanel.Controls.Add(this.txtSDT);
             this.grPanel.Controls.Add(this.label7);
             this.grPanel.Controls.Add(this.label5);
             this.grPanel.Controls.Add(this.label6);
@@ -194,6 +194,15 @@ namespace restaurant_management.MenuTab
             this.grPanel.Name = "grPanel";
             this.grPanel.Size = new System.Drawing.Size(913, 107);
             this.grPanel.TabIndex = 16;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSDT.Location = new System.Drawing.Point(115, 69);
+            this.txtSDT.Mask = "999-000-0000";
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(307, 22);
+            this.txtSDT.TabIndex = 6;
             // 
             // radNu
             // 
@@ -234,14 +243,6 @@ namespace restaurant_management.MenuTab
             this.txtDiemTichLuy.ReadOnly = true;
             this.txtDiemTichLuy.Size = new System.Drawing.Size(305, 22);
             this.txtDiemTichLuy.TabIndex = 7;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(115, 69);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(307, 22);
-            this.txtSDT.TabIndex = 6;
             // 
             // label7
             // 
@@ -352,6 +353,7 @@ namespace restaurant_management.MenuTab
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnCancel.Location = new System.Drawing.Point(255, 3);
             this.btnCancel.Name = "btnCancel";
@@ -410,6 +412,7 @@ namespace restaurant_management.MenuTab
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(931, 536);
             this.Controls.Add(this.pnSearch);
             this.Controls.Add(this.panel1);
@@ -443,7 +446,6 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel pnSearch;
-        private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTenKhachHang;
@@ -462,5 +464,6 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sdt;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemTichLuy;
+        private System.Windows.Forms.MaskedTextBox txtSDT;
     }
 }

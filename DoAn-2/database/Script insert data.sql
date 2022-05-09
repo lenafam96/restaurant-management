@@ -23,7 +23,7 @@ VALUES
     1, -- quyenVoucher - bit
     1, -- quyenThongKe - bit
     1, -- quyenKho - bit
-    0  -- quyenThietLap - bit
+    1  -- quyenThietLap - bit
     ),
 (   2,    -- role - int
     N'Quản trị viên',  -- nameRole - nvarchar(20)
@@ -43,17 +43,17 @@ VALUES
     0, -- quyenVoucher - bit
     1, -- quyenThongKe - bit
     1, -- quyenKho - bit
-    0  -- quyenThietLap - bit
+    1  -- quyenThietLap - bit
     ),
 (   4,    -- role - int
-    N'Thu Ngân',  -- nameRole - nvarchar(20)
+    N'Thu ngân',  -- nameRole - nvarchar(20)
     1, -- quyenBan - bit
     0, -- quyenNhanVien - bit
     1, -- quyenKhachHang - bit
     1, -- quyenVoucher - bit
     1, -- quyenThongKe - bit
     0, -- quyenKho - bit
-    0  -- quyenThietLap - bit
+    1  -- quyenThietLap - bit
     ),
 (   5,    -- role - int
     N'Phục vụ',  -- nameRole - nvarchar(20)
@@ -63,7 +63,7 @@ VALUES
     0, -- quyenVoucher - bit
     1, -- quyenThongKe - bit
     0, -- quyenKho - bit
-    0  -- quyenThietLap - bit
+    1  -- quyenThietLap - bit
     ),
 (   -1,    -- role - int
     N'Vô hiệu hoá',  -- nameRole - nvarchar(20)
@@ -73,7 +73,7 @@ VALUES
     0, -- quyenVoucher - bit
     0, -- quyenThongKe - bit
     0, -- quyenKho - bit
-    0  -- quyenThietLap - bit
+    1  -- quyenThietLap - bit
     )
 GO
 

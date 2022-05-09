@@ -32,13 +32,14 @@ namespace restaurant_management.MenuTab
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpTaiKhoan = new System.Windows.Forms.TabPage();
+            this.tpDanhMucMon = new System.Windows.Forms.TabPage();
             this.tpMonAn = new System.Windows.Forms.TabPage();
+            this.tpNhaCungCap = new System.Windows.Forms.TabPage();
             this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProviderUserName = new System.Windows.Forms.ErrorProvider(this.components);
             this.nameRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paneltrangcon = new System.Windows.Forms.Panel();
-            this.tpDanhMucMon = new System.Windows.Forms.TabPage();
-            this.tpNhaCungCap = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,7 @@ namespace restaurant_management.MenuTab
             this.tabControl1.Controls.Add(this.tpDanhMucMon);
             this.tabControl1.Controls.Add(this.tpMonAn);
             this.tabControl1.Controls.Add(this.tpNhaCungCap);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -62,20 +64,40 @@ namespace restaurant_management.MenuTab
             this.tpTaiKhoan.Location = new System.Drawing.Point(4, 22);
             this.tpTaiKhoan.Name = "tpTaiKhoan";
             this.tpTaiKhoan.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTaiKhoan.Size = new System.Drawing.Size(923, 104);
+            this.tpTaiKhoan.Size = new System.Drawing.Size(923, 135);
             this.tpTaiKhoan.TabIndex = 0;
             this.tpTaiKhoan.Text = "Tài khoản";
             this.tpTaiKhoan.UseVisualStyleBackColor = true;
+            // 
+            // tpDanhMucMon
+            // 
+            this.tpDanhMucMon.Location = new System.Drawing.Point(4, 22);
+            this.tpDanhMucMon.Name = "tpDanhMucMon";
+            this.tpDanhMucMon.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDanhMucMon.Size = new System.Drawing.Size(923, 0);
+            this.tpDanhMucMon.TabIndex = 1;
+            this.tpDanhMucMon.Text = "Danh mục món";
+            this.tpDanhMucMon.UseVisualStyleBackColor = true;
             // 
             // tpMonAn
             // 
             this.tpMonAn.Location = new System.Drawing.Point(4, 22);
             this.tpMonAn.Name = "tpMonAn";
             this.tpMonAn.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMonAn.Size = new System.Drawing.Size(923, 26);
+            this.tpMonAn.Size = new System.Drawing.Size(923, 0);
             this.tpMonAn.TabIndex = 2;
             this.tpMonAn.Text = "Món ăn";
             this.tpMonAn.UseVisualStyleBackColor = true;
+            // 
+            // tpNhaCungCap
+            // 
+            this.tpNhaCungCap.Location = new System.Drawing.Point(4, 22);
+            this.tpNhaCungCap.Name = "tpNhaCungCap";
+            this.tpNhaCungCap.Padding = new System.Windows.Forms.Padding(3);
+            this.tpNhaCungCap.Size = new System.Drawing.Size(923, 0);
+            this.tpNhaCungCap.TabIndex = 3;
+            this.tpNhaCungCap.Text = "Nhà cung cấp";
+            this.tpNhaCungCap.UseVisualStyleBackColor = true;
             // 
             // userName
             // 
@@ -112,25 +134,15 @@ namespace restaurant_management.MenuTab
             this.paneltrangcon.Size = new System.Drawing.Size(931, 536);
             this.paneltrangcon.TabIndex = 4;
             // 
-            // tpDanhMucMon
+            // tabPage1
             // 
-            this.tpDanhMucMon.Location = new System.Drawing.Point(4, 22);
-            this.tpDanhMucMon.Name = "tpDanhMucMon";
-            this.tpDanhMucMon.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDanhMucMon.Size = new System.Drawing.Size(923, 26);
-            this.tpDanhMucMon.TabIndex = 1;
-            this.tpDanhMucMon.Text = "Danh mục món";
-            this.tpDanhMucMon.UseVisualStyleBackColor = true;
-            // 
-            // tpNhaCungCap
-            // 
-            this.tpNhaCungCap.Location = new System.Drawing.Point(4, 22);
-            this.tpNhaCungCap.Name = "tpNhaCungCap";
-            this.tpNhaCungCap.Padding = new System.Windows.Forms.Padding(3);
-            this.tpNhaCungCap.Size = new System.Drawing.Size(923, 0);
-            this.tpNhaCungCap.TabIndex = 3;
-            this.tpNhaCungCap.Text = "Nhà cung cấp";
-            this.tpNhaCungCap.UseVisualStyleBackColor = true;
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(923, 0);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Hoá đơn";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // frmThietLap
             // 
@@ -159,5 +171,6 @@ namespace restaurant_management.MenuTab
         private System.Windows.Forms.Panel paneltrangcon;
         private System.Windows.Forms.TabPage tpDanhMucMon;
         private System.Windows.Forms.TabPage tpNhaCungCap;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

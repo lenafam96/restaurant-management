@@ -176,10 +176,14 @@ namespace restaurant_management
         private void btnSetting_Click(object sender, EventArgs e)
         {
             activebtn(sender, RGBColors.color6);
-            if(loginAccount.Role == 1)
-                motrangcon(new frmThietLap());
-            else
-                motrangcon(new frmPhanQuyen());
+            switch(loginAccount.Role)
+            {
+                case 1: motrangcon(new frmThietLap()); break;
+                case 2: motrangcon(new frmPhanQuyen()); break;
+                case 3: 
+                case 4:
+                case 5: motrangcon(new frmCaiDat()); break;
+            }
         }
         private void btnlogout_Click(object sender, EventArgs e)
         {

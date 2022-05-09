@@ -150,17 +150,23 @@
     <Compile Include="View\frmCaiDatNhaCungCap.Designer.cs">
       <DependentUpon>frmCaiDatNhaCungCap.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmCaiDatTaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmCaiDatTaiKhoan.Designer.cs">
-      <DependentUpon>frmCaiDatTaiKhoan.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FormStart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormStart.Designer.cs">
       <DependentUpon>FormStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCaiDatTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCaiDatTaiKhoan.designer.cs">
+      <DependentUpon>frmCaiDatTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmHoaDon.Designer.cs">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmKetNoiDB.cs">
       <SubType>Form</SubType>
@@ -248,11 +254,14 @@
     <EmbeddedResource Include="View\frmCaiDatNhaCungCap.resx">
       <DependentUpon>frmCaiDatNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormStart.resx">
+      <DependentUpon>FormStart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmCaiDatTaiKhoan.resx">
       <DependentUpon>frmCaiDatTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormStart.resx">
-      <DependentUpon>FormStart.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmHoaDon.resx">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmKetNoiDB.resx">
       <DependentUpon>frmKetNoiDB.cs</DependentUpon>
@@ -268,6 +277,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuTab\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuTab\frmNhapKho.resx">
       <DependentUpon>frmNhapKho.cs</DependentUpon>

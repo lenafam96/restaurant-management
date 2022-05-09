@@ -38,23 +38,23 @@ namespace restaurant_management.View
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.dtgvNhaCungCap = new ADGV.AdvancedDataGridView();
-            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.MaNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grPanel = new System.Windows.Forms.Panel();
+            this.txtSDT = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTenNhaCungCap = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtMaNhaCungCap = new System.Windows.Forms.TextBox();
-            this.MaNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnSearch.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNhaCungCap)).BeginInit();
@@ -176,13 +176,55 @@ namespace restaurant_management.View
             this.dtgvNhaCungCap.FilterStringChanged += new System.EventHandler(this.dtgvNhaCungCap_FilterStringChanged);
             this.dtgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvNhaCungCap_CellClick);
             // 
-            // txtSDT
+            // MaNhaCungCap
             // 
-            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(126, 71);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(204, 22);
-            this.txtSDT.TabIndex = 4;
+            this.MaNhaCungCap.DataPropertyName = "MaNhaCungCap";
+            this.MaNhaCungCap.HeaderText = "Mã nhà cung cấp";
+            this.MaNhaCungCap.MinimumWidth = 22;
+            this.MaNhaCungCap.Name = "MaNhaCungCap";
+            this.MaNhaCungCap.ReadOnly = true;
+            this.MaNhaCungCap.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.MaNhaCungCap.Width = 120;
+            // 
+            // tenNhaCungCap
+            // 
+            this.tenNhaCungCap.DataPropertyName = "tenNhaCungCap";
+            this.tenNhaCungCap.HeaderText = "Tên nhà cung cấp";
+            this.tenNhaCungCap.MinimumWidth = 22;
+            this.tenNhaCungCap.Name = "tenNhaCungCap";
+            this.tenNhaCungCap.ReadOnly = true;
+            this.tenNhaCungCap.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.tenNhaCungCap.Width = 250;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa chỉ";
+            this.DiaChi.MinimumWidth = 22;
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.DiaChi.Width = 350;
+            // 
+            // sdt
+            // 
+            this.sdt.DataPropertyName = "sdt";
+            this.sdt.HeaderText = "SĐT";
+            this.sdt.MinimumWidth = 22;
+            this.sdt.Name = "sdt";
+            this.sdt.ReadOnly = true;
+            this.sdt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.sdt.Width = 80;
+            // 
+            // email
+            // 
+            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Email";
+            this.email.MinimumWidth = 22;
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label2
             // 
@@ -231,6 +273,7 @@ namespace restaurant_management.View
             // grPanel
             // 
             this.grPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grPanel.Controls.Add(this.txtSDT);
             this.grPanel.Controls.Add(this.label5);
             this.grPanel.Controls.Add(this.label8);
             this.grPanel.Controls.Add(this.txtDiaChi);
@@ -238,13 +281,21 @@ namespace restaurant_management.View
             this.grPanel.Controls.Add(this.txtTenNhaCungCap);
             this.grPanel.Controls.Add(this.label3);
             this.grPanel.Controls.Add(this.txtEmail);
-            this.grPanel.Controls.Add(this.txtSDT);
             this.grPanel.Controls.Add(this.txtMaNhaCungCap);
             this.grPanel.Controls.Add(this.label2);
             this.grPanel.Location = new System.Drawing.Point(13, 85);
             this.grPanel.Name = "grPanel";
             this.grPanel.Size = new System.Drawing.Size(913, 100);
             this.grPanel.TabIndex = 31;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSDT.Location = new System.Drawing.Point(126, 71);
+            this.txtSDT.Mask = "999-000-0000";
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(204, 22);
+            this.txtSDT.TabIndex = 4;
             // 
             // label5
             // 
@@ -304,58 +355,9 @@ namespace restaurant_management.View
             this.txtMaNhaCungCap.Size = new System.Drawing.Size(204, 22);
             this.txtMaNhaCungCap.TabIndex = 1;
             // 
-            // MaNhaCungCap
-            // 
-            this.MaNhaCungCap.DataPropertyName = "MaNhaCungCap";
-            this.MaNhaCungCap.HeaderText = "Mã nhà cung cấp";
-            this.MaNhaCungCap.MinimumWidth = 22;
-            this.MaNhaCungCap.Name = "MaNhaCungCap";
-            this.MaNhaCungCap.ReadOnly = true;
-            this.MaNhaCungCap.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.MaNhaCungCap.Width = 120;
-            // 
-            // tenNhaCungCap
-            // 
-            this.tenNhaCungCap.DataPropertyName = "tenNhaCungCap";
-            this.tenNhaCungCap.HeaderText = "Tên nhà cung cấp";
-            this.tenNhaCungCap.MinimumWidth = 22;
-            this.tenNhaCungCap.Name = "tenNhaCungCap";
-            this.tenNhaCungCap.ReadOnly = true;
-            this.tenNhaCungCap.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.tenNhaCungCap.Width = 250;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa chỉ";
-            this.DiaChi.MinimumWidth = 22;
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.DiaChi.Width = 350;
-            // 
-            // sdt
-            // 
-            this.sdt.DataPropertyName = "sdt";
-            this.sdt.HeaderText = "SĐT";
-            this.sdt.MinimumWidth = 22;
-            this.sdt.Name = "sdt";
-            this.sdt.ReadOnly = true;
-            this.sdt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.sdt.Width = 80;
-            // 
-            // email
-            // 
-            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Email";
-            this.email.MinimumWidth = 22;
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
             // frmCaiDatNhaCungCap
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 534);
@@ -395,7 +397,6 @@ namespace restaurant_management.View
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTenNhaCungCap;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtMaNhaCungCap;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -405,5 +406,6 @@ namespace restaurant_management.View
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn sdt;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.MaskedTextBox txtSDT;
     }
 }

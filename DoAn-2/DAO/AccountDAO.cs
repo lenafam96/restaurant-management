@@ -71,10 +71,10 @@ namespace restaurant_management.DAO
             return hassPassRev;
         }
 
-        public bool UpdateAccountInfo(string userName, string displayName, string passWord, string newPassWord, int role)
+        public bool UpdateAccountInfo(string userName, int maNhanVien, string passWord, int role)
         {
 
-            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_UpdateAccount @userName , @displayName , @passWord , @newPassWord , @role ", new object[] { userName, displayName, HasPass(passWord), newPassWord != "" ? HasPass(newPassWord) : "", role });
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC dbo.USP_UpdateAccount @userName , @maNhanVien , @passWord , @newPassWord , @role ", new object[] { userName, maNhanVien, HasPass(passWord), role });
             return count > 0;
         }
 
@@ -93,7 +93,7 @@ namespace restaurant_management.DAO
 
         public bool EditAccountInfo(string userName, int maNhanVien, int role)
         {
-            int count = DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.TaiKhoan SET maNhanVien = N'" + maNhanVien + "', role = " + role + " WHERE userName = N'" + userName + "' ");
+            int count = DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.TaiKhoan SET maNhanVien = '" + maNhanVien + "', role = " + role + " WHERE userName = N'" + userName + "' ");
             return count > 0;
         }
 

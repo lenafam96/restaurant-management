@@ -47,6 +47,7 @@ namespace restaurant_management.MenuTab
                 case 1: motrangcon(new frmCaiDatDanhMucMon()); break;
                 case 2: motrangcon(new frmCaiDatMonAn()); break;
                 case 3: motrangcon(new frmCaiDatNhaCungCap()); break;
+                case 4: motrangcon(new frmHoaDon()); break;
             }
         }
 

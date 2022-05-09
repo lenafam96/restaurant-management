@@ -128,13 +128,13 @@ namespace restaurant_management.MenuTab
             {
                 if (Add)
                 {
-                    if (NhanVienDAO.Instance.InsertNhanVien(txtTenNhanVien.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtChucVu.Text, txtSDT.Text, txtCCCD.Text, int.Parse(nbuLuong.Value.ToString())))
+                    if (NhanVienDAO.Instance.InsertNhanVien(txtTenNhanVien.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtChucVu.Text, txtSDT.Text.Replace("-", string.Empty), txtCCCD.Text, int.Parse(nbuLuong.Value.ToString())))
                         MessageBox.Show("Thêm dữ liệu thành công!");
                     LoadData();
                 }
                 else
                 {
-                    if (NhanVienDAO.Instance.UpdateNhanVien(int.Parse(txtMaNhanVien.Text), txtTenNhanVien.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtChucVu.Text, txtSDT.Text, txtCCCD.Text, int.Parse(nbuLuong.Value.ToString())))
+                    if (NhanVienDAO.Instance.UpdateNhanVien(int.Parse(txtMaNhanVien.Text), txtTenNhanVien.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtChucVu.Text, txtSDT.Text.Replace("-", string.Empty), txtCCCD.Text, int.Parse(nbuLuong.Value.ToString())))
                         MessageBox.Show("Sửa dữ liệu thành công!");
                     LoadData();
                 }

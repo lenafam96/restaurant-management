@@ -37,6 +37,23 @@ namespace restaurant_management.DAO
             return list;
         }
 
+        public List<ChiTietHoatDon> GetListMonAnByMaHoaDon(int maHoaDon)
+        {
+            List<ChiTietHoatDon> list = new List<ChiTietHoatDon>();
+
+            string query = "EXEC USP_GetListMonAnByMaHoaDon " + maHoaDon;
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                ChiTietHoatDon tmp = new ChiTietHoatDon(item);
+                list.Add(tmp);
+            }
+
+            return list;
+        }
+
         public ChiTietHoatDon CheckMonAnTrongHoaDon(int maHoaDon, int maMonAn)
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_CheckMonAnTrongHoaDon @maHoaDon , @maMonAn", new object[] { maHoaDon, maMonAn });
