@@ -25,6 +25,32 @@ namespace restaurant_management.View
             this.HoaDon = hoaDon;
         }
 
+        int SoLuongToiDa()
+        {
+            int min = int.MaxValue;
+            List<ChiTietMonAn> listChiTietMonAn = ChiTietMonAnDAO.Instance.GetListThucPhamByMaMonAn(this.selected.MaMonAn);
+            foreach (ChiTietMonAn item in listChiTietMonAn)
+            {
+                ThucPham tmp = ThucPhamDAO.Instance.GetThucPhamByMaThucPham(item.MaThucPham);
+                if (tmp != null && item.SoLuong > 0 && min > (tmp.TonKho / item.SoLuong))
+                    min = tmp.TonKho / item.SoLuong;
+            }
+            return min;
+        }
+
+        int SoLuongToiDa(int maMonAn)
+        {
+            int min = int.MaxValue;
+            List<ChiTietMonAn> listChiTietMonAn = ChiTietMonAnDAO.Instance.GetListThucPhamByMaMonAn(maMonAn);
+            foreach (ChiTietMonAn item in listChiTietMonAn)
+            {
+                ThucPham tmp = ThucPhamDAO.Instance.GetThucPhamByMaThucPham(item.MaThucPham);
+                if (tmp != null && item.SoLuong>0 && min > (tmp.TonKho / item.SoLuong))
+                    min = tmp.TonKho / item.SoLuong;
+            }
+            return min;
+        }
+
         void LoadData()
         {
             flpMonAn.Controls.Clear();
@@ -48,6 +74,8 @@ namespace restaurant_management.View
                 Button btn = new Button() { Width = MonAnDAO.Width, Height = MonAnDAO.Height };
                 btn.Font = new Font(btn.Font.FontFamily, 8);
                 btn.Text = list[i].TenMonAn;
+                if (SoLuongToiDa(list[i].MaMonAn) == 0)
+                    btn.Text += "\nHết";
                 btn.Tag = list[i];
                 btn.BackColor = Color.FromArgb(172, 126, 241);
                 btn.ForeColor = Color.White;
@@ -62,6 +90,7 @@ namespace restaurant_management.View
         {
             this.selected = (sender as Button).Tag as MonAn;
             nbuSoLuong.Value = 0;
+            nbuSoLuong.Maximum = SoLuongToiDa();
         }
 
         private void frmMonAn_Load(object sender, EventArgs e)
@@ -73,10 +102,27 @@ namespace restaurant_management.View
         {
             if (nbuSoLuong.Value != 0 && this.selected != null)
             {
-                if (ChiTietHoaDonDAO.Instance.CheckMonAnTrongHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn))
-                    ChiTietHoaDonDAO.Instance.CapNhatMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, (int)nbuSoLuong.Value);
-                else
-                    ChiTietHoaDonDAO.Instance.ThemMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, (int)nbuSoLuong.Value);
+                int soLuongThem = (int)nbuSoLuong.Value;
+                List<ChiTietMonAn> listChiTietMonAn = ChiTietMonAnDAO.Instance.GetListThucPhamByMaMonAn(this.selected.MaMonAn);
+                if (ChiTietHoaDonDAO.Instance.CheckMonAnTrongHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn)!=null)
+                {
+                    ChiTietHoatDon tmp = ChiTietHoaDonDAO.Instance.CheckMonAnTrongHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn);
+                    ChiTietHoaDonDAO.Instance.CapNhatMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, soLuongThem);
+                    if (tmp.SoLuong + soLuongThem < 0)
+                        soLuongThem = tmp.SoLuong * -1;
+                    foreach (ChiTietMonAn item in listChiTietMonAn)
+                    {
+                        ThucPhamDAO.Instance.UpdateSoLuongThucPham(item.MaThucPham, soLuongThem * item.SoLuong);
+                    }
+                }    
+                else if( soLuongThem > 0 )
+                {
+                    ChiTietHoaDonDAO.Instance.ThemMonAnVaoHoaDon(this.HoaDon.MaHoaDon, this.selected.MaMonAn, soLuongThem);
+                    foreach (ChiTietMonAn item in listChiTietMonAn)
+                    {
+                        ThucPhamDAO.Instance.UpdateSoLuongThucPham(item.MaThucPham, soLuongThem * item.SoLuong);
+                    }
+                }    
             }
             this.Close();
         }

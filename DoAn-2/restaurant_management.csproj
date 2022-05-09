@@ -86,12 +86,15 @@
     <Compile Include="DAO\BanDAO.cs" />
     <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
     <Compile Include="DAO\ChiTietMonAnDAO.cs" />
+    <Compile Include="DAO\ChiTietPhieuNhapDAO.cs" />
     <Compile Include="DAO\DanhMucMonDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\MonAnDAO.cs" />
+    <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
+    <Compile Include="DAO\PhieuNhapDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\TestConnection.cs" />
     <Compile Include="DAO\ThucPhamDAO.cs" />
@@ -100,11 +103,14 @@
     <Compile Include="DTO\Ban.cs" />
     <Compile Include="DTO\ChiTietHoatDon.cs" />
     <Compile Include="DTO\ChiTietMonAn.cs" />
+    <Compile Include="DTO\ChiTietPhieuNhap.cs" />
     <Compile Include="DTO\DanhMucMon.cs" />
     <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\KhachHang.cs" />
     <Compile Include="DTO\MonAn.cs" />
+    <Compile Include="DTO\NhaCungCap.cs" />
     <Compile Include="DTO\NhanVien.cs" />
+    <Compile Include="DTO\PhieuNhap.cs" />
     <Compile Include="DTO\Role.cs" />
     <Compile Include="DTO\ThucPham.cs" />
     <Compile Include="DTO\Voucher.cs" />
@@ -137,6 +143,12 @@
     </Compile>
     <Compile Include="View\frmCaiDatMonAn.Designer.cs">
       <DependentUpon>frmCaiDatMonAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCaiDatNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCaiDatNhaCungCap.Designer.cs">
+      <DependentUpon>frmCaiDatNhaCungCap.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmCaiDatTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -232,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCaiDatMonAn.resx">
       <DependentUpon>frmCaiDatMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCaiDatNhaCungCap.resx">
+      <DependentUpon>frmCaiDatNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCaiDatTaiKhoan.resx">
       <DependentUpon>frmCaiDatTaiKhoan.cs</DependentUpon>

@@ -68,7 +68,7 @@ namespace restaurant_management.MenuTab
             lsvHoaDon.Items.Clear();
             btnTaoHoaDon.Enabled = false;
             btnThemMon.Enabled = true;
-            btnThanhToan.Enabled = true;
+            btnThanhToan.Enabled = MainControl.LoginAccount.Role != 5 ? true : false;
             lsvHoaDon.Enabled = true;
             grpanel.Enabled = true;
         }

@@ -54,6 +54,18 @@ namespace restaurant_management.DAO
             return count > 0;
         }
 
+        public bool UpdateSoLuongThucPham(int maThucPham, int soLuong)
+        {
+            int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_UpdateSoLuongThucPham @maThucPham , @soLuong ", new object[] { maThucPham, soLuong });
+            return count > 0;
+        }
+
+        public ThucPham GetThucPhamByMaThucPham(int maThucPham)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_GetThucPhamByMaThucPham " + maThucPham);
+            return data.Rows.Count > 0 ? new ThucPham(data.Rows[0]) : null;
+        }
+
         public bool DeleteThucPham(int maThucPham)
         {
             int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_DeleteThucPham " + maThucPham);

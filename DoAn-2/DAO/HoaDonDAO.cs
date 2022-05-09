@@ -42,5 +42,10 @@ namespace restaurant_management.DAO
             int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_ChuyenHoaDonSangBanMoi @maHoaDon , @maBanMoi ", new object[] { maHoaDon, maBanMoi });
             return count > 0;
         }
+
+        public DataTable GetHoaDon30Day()
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetHoaDon30Day");
+        }
     }
 }
