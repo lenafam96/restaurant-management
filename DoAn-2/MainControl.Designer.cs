@@ -468,6 +468,10 @@
             this.panelshadow.Size = new System.Drawing.Size(628, 9);
             this.panelshadow.TabIndex = 2;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // paneltrangcon
             // 
             this.paneltrangcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
