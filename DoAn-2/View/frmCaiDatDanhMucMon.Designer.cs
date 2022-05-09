@@ -100,11 +100,11 @@ namespace restaurant_management.View
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(300, 17);
+            this.label1.Location = new System.Drawing.Point(270, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(369, 47);
+            this.label1.Size = new System.Drawing.Size(437, 47);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Quản lý danh mục món";
+            this.label1.Text = "QUẢN LÝ DANH MỤC MÓN";
             // 
             // panel2
             // 
@@ -126,7 +126,7 @@ namespace restaurant_management.View
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(78, 26);
             this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -137,7 +137,7 @@ namespace restaurant_management.View
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 26);
             this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Huỷ";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -148,7 +148,7 @@ namespace restaurant_management.View
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(78, 26);
             this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -159,7 +159,7 @@ namespace restaurant_management.View
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(78, 26);
             this.btnEdit.TabIndex = 9;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Cập nhật";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -170,7 +170,7 @@ namespace restaurant_management.View
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(78, 26);
             this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 

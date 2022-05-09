@@ -56,11 +56,11 @@ namespace restaurant_management.View
             this.stt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tenThucPham = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.soLuong = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.donViTinh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gpThucPham = new System.Windows.Forms.Panel();
             this.cmbThucPham = new System.Windows.Forms.ComboBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.nbuSoLuong = new System.Windows.Forms.NumericUpDown();
-            this.donViTinh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonAn)).BeginInit();
             this.panel2.SuspendLayout();
             this.grPanel.SuspendLayout();
@@ -140,11 +140,11 @@ namespace restaurant_management.View
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(337, 24);
+            this.label1.Location = new System.Drawing.Point(317, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 47);
+            this.label1.Size = new System.Drawing.Size(305, 47);
             this.label1.TabIndex = 29;
-            this.label1.Text = "Quản lý món ăn";
+            this.label1.Text = "QUẢN LÝ MÓN ĂN";
             // 
             // panel2
             // 
@@ -166,7 +166,7 @@ namespace restaurant_management.View
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(78, 26);
             this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -177,7 +177,7 @@ namespace restaurant_management.View
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 26);
             this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Huỷ";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -188,7 +188,7 @@ namespace restaurant_management.View
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(78, 26);
             this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -199,7 +199,7 @@ namespace restaurant_management.View
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(78, 26);
             this.btnEdit.TabIndex = 9;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Cập nhật";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -210,7 +210,7 @@ namespace restaurant_management.View
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(78, 26);
             this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -237,7 +237,7 @@ namespace restaurant_management.View
             this.cmbDanhMuc.Location = new System.Drawing.Point(727, 9);
             this.cmbDanhMuc.Name = "cmbDanhMuc";
             this.cmbDanhMuc.Size = new System.Drawing.Size(176, 21);
-            this.cmbDanhMuc.TabIndex = 34;
+            this.cmbDanhMuc.TabIndex = 4;
             // 
             // label3
             // 
@@ -262,7 +262,7 @@ namespace restaurant_management.View
             this.nbuGia.Name = "nbuGia";
             this.nbuGia.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nbuGia.Size = new System.Drawing.Size(114, 22);
-            this.nbuGia.TabIndex = 10;
+            this.nbuGia.TabIndex = 3;
             // 
             // label8
             // 
@@ -280,7 +280,7 @@ namespace restaurant_management.View
             this.txtTenMonAn.Location = new System.Drawing.Point(244, 10);
             this.txtTenMonAn.Name = "txtTenMonAn";
             this.txtTenMonAn.Size = new System.Drawing.Size(226, 20);
-            this.txtTenMonAn.TabIndex = 1;
+            this.txtTenMonAn.TabIndex = 2;
             this.txtTenMonAn.Leave += new System.EventHandler(this.txtTenMonAn_Leave);
             // 
             // txtMaMonAn
@@ -342,13 +342,17 @@ namespace restaurant_management.View
             // 
             // tenThucPham
             // 
-            this.tenThucPham.Text = "Tên món";
+            this.tenThucPham.Text = "Tên thực phẩm";
             this.tenThucPham.Width = 180;
             // 
             // soLuong
             // 
             this.soLuong.Text = "Số lượng";
             this.soLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // donViTinh
+            // 
+            this.donViTinh.Text = "Đơn vị";
             // 
             // gpThucPham
             // 
@@ -378,7 +382,7 @@ namespace restaurant_management.View
             this.btnThem.Location = new System.Drawing.Point(275, 6);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(78, 26);
-            this.btnThem.TabIndex = 8;
+            this.btnThem.TabIndex = 36;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -395,11 +399,7 @@ namespace restaurant_management.View
             this.nbuSoLuong.Name = "nbuSoLuong";
             this.nbuSoLuong.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nbuSoLuong.Size = new System.Drawing.Size(84, 24);
-            this.nbuSoLuong.TabIndex = 10;
-            // 
-            // donViTinh
-            // 
-            this.donViTinh.Text = "Đơn vị";
+            this.nbuSoLuong.TabIndex = 35;
             // 
             // frmCaiDatMonAn
             // 
@@ -413,6 +413,7 @@ namespace restaurant_management.View
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.grPanel);
             this.Name = "frmCaiDatMonAn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "frmCaiDatMonAn";
             this.Load += new System.EventHandler(this.frmCaiDatMonAn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonAn)).EndInit();

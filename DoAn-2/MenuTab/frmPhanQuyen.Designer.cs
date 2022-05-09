@@ -34,13 +34,13 @@ namespace restaurant_management.MenuTab
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.grPanel = new System.Windows.Forms.Panel();
-            this.cboLoaiTK = new System.Windows.Forms.ComboBox();
-            this.ckbBan = new System.Windows.Forms.CheckBox();
-            this.ckbNhanVien = new System.Windows.Forms.CheckBox();
-            this.ckbKhachHang = new System.Windows.Forms.CheckBox();
-            this.ckbVoucher = new System.Windows.Forms.CheckBox();
-            this.ckbThongKe = new System.Windows.Forms.CheckBox();
             this.ckbKho = new System.Windows.Forms.CheckBox();
+            this.ckbThongKe = new System.Windows.Forms.CheckBox();
+            this.ckbVoucher = new System.Windows.Forms.CheckBox();
+            this.ckbKhachHang = new System.Windows.Forms.CheckBox();
+            this.ckbNhanVien = new System.Windows.Forms.CheckBox();
+            this.ckbBan = new System.Windows.Forms.CheckBox();
+            this.cboLoaiTK = new System.Windows.Forms.ComboBox();
             this.grPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,11 +50,11 @@ namespace restaurant_management.MenuTab
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(281, 11);
+            this.label1.Location = new System.Drawing.Point(272, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(347, 47);
+            this.label1.Size = new System.Drawing.Size(418, 47);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Phân quyền tài khoản";
+            this.label1.Text = "PHÂN QUYỀN TÀI KHOẢN";
             // 
             // btnSave
             // 
@@ -106,60 +106,16 @@ namespace restaurant_management.MenuTab
             this.grPanel.Size = new System.Drawing.Size(910, 221);
             this.grPanel.TabIndex = 13;
             // 
-            // cboLoaiTK
+            // ckbKho
             // 
-            this.cboLoaiTK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLoaiTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboLoaiTK.FormattingEnabled = true;
-            this.cboLoaiTK.Location = new System.Drawing.Point(131, 8);
-            this.cboLoaiTK.Name = "cboLoaiTK";
-            this.cboLoaiTK.Size = new System.Drawing.Size(238, 28);
-            this.cboLoaiTK.TabIndex = 8;
-            this.cboLoaiTK.SelectedIndexChanged += new System.EventHandler(this.cboLoaiTK_SelectedIndexChanged);
-            // 
-            // ckbBan
-            // 
-            this.ckbBan.AutoSize = true;
-            this.ckbBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbBan.Location = new System.Drawing.Point(131, 47);
-            this.ckbBan.Name = "ckbBan";
-            this.ckbBan.Size = new System.Drawing.Size(112, 24);
-            this.ckbBan.TabIndex = 9;
-            this.ckbBan.Text = "Quản lý bàn";
-            this.ckbBan.UseVisualStyleBackColor = true;
-            // 
-            // ckbNhanVien
-            // 
-            this.ckbNhanVien.AutoSize = true;
-            this.ckbNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbNhanVien.Location = new System.Drawing.Point(131, 71);
-            this.ckbNhanVien.Name = "ckbNhanVien";
-            this.ckbNhanVien.Size = new System.Drawing.Size(153, 24);
-            this.ckbNhanVien.TabIndex = 9;
-            this.ckbNhanVien.Text = "Quản lý nhân viên";
-            this.ckbNhanVien.UseVisualStyleBackColor = true;
-            // 
-            // ckbKhachHang
-            // 
-            this.ckbKhachHang.AutoSize = true;
-            this.ckbKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbKhachHang.Location = new System.Drawing.Point(131, 95);
-            this.ckbKhachHang.Name = "ckbKhachHang";
-            this.ckbKhachHang.Size = new System.Drawing.Size(168, 24);
-            this.ckbKhachHang.TabIndex = 9;
-            this.ckbKhachHang.Text = "Quản lý khách hàng";
-            this.ckbKhachHang.UseVisualStyleBackColor = true;
-            // 
-            // ckbVoucher
-            // 
-            this.ckbVoucher.AutoSize = true;
-            this.ckbVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbVoucher.Location = new System.Drawing.Point(131, 119);
-            this.ckbVoucher.Name = "ckbVoucher";
-            this.ckbVoucher.Size = new System.Drawing.Size(141, 24);
-            this.ckbVoucher.TabIndex = 9;
-            this.ckbVoucher.Text = "Quản lý voucher";
-            this.ckbVoucher.UseVisualStyleBackColor = true;
+            this.ckbKho.AutoSize = true;
+            this.ckbKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbKho.Location = new System.Drawing.Point(131, 167);
+            this.ckbKho.Name = "ckbKho";
+            this.ckbKho.Size = new System.Drawing.Size(111, 24);
+            this.ckbKho.TabIndex = 9;
+            this.ckbKho.Text = "Quản lý kho";
+            this.ckbKho.UseVisualStyleBackColor = true;
             // 
             // ckbThongKe
             // 
@@ -172,16 +128,60 @@ namespace restaurant_management.MenuTab
             this.ckbThongKe.Text = "Thống kê";
             this.ckbThongKe.UseVisualStyleBackColor = true;
             // 
-            // ckbKho
+            // ckbVoucher
             // 
-            this.ckbKho.AutoSize = true;
-            this.ckbKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbKho.Location = new System.Drawing.Point(131, 167);
-            this.ckbKho.Name = "ckbKho";
-            this.ckbKho.Size = new System.Drawing.Size(111, 24);
-            this.ckbKho.TabIndex = 9;
-            this.ckbKho.Text = "Quản lý kho";
-            this.ckbKho.UseVisualStyleBackColor = true;
+            this.ckbVoucher.AutoSize = true;
+            this.ckbVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbVoucher.Location = new System.Drawing.Point(131, 119);
+            this.ckbVoucher.Name = "ckbVoucher";
+            this.ckbVoucher.Size = new System.Drawing.Size(141, 24);
+            this.ckbVoucher.TabIndex = 9;
+            this.ckbVoucher.Text = "Quản lý voucher";
+            this.ckbVoucher.UseVisualStyleBackColor = true;
+            // 
+            // ckbKhachHang
+            // 
+            this.ckbKhachHang.AutoSize = true;
+            this.ckbKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbKhachHang.Location = new System.Drawing.Point(131, 95);
+            this.ckbKhachHang.Name = "ckbKhachHang";
+            this.ckbKhachHang.Size = new System.Drawing.Size(168, 24);
+            this.ckbKhachHang.TabIndex = 9;
+            this.ckbKhachHang.Text = "Quản lý khách hàng";
+            this.ckbKhachHang.UseVisualStyleBackColor = true;
+            // 
+            // ckbNhanVien
+            // 
+            this.ckbNhanVien.AutoSize = true;
+            this.ckbNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbNhanVien.Location = new System.Drawing.Point(131, 71);
+            this.ckbNhanVien.Name = "ckbNhanVien";
+            this.ckbNhanVien.Size = new System.Drawing.Size(153, 24);
+            this.ckbNhanVien.TabIndex = 9;
+            this.ckbNhanVien.Text = "Quản lý nhân viên";
+            this.ckbNhanVien.UseVisualStyleBackColor = true;
+            // 
+            // ckbBan
+            // 
+            this.ckbBan.AutoSize = true;
+            this.ckbBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbBan.Location = new System.Drawing.Point(131, 47);
+            this.ckbBan.Name = "ckbBan";
+            this.ckbBan.Size = new System.Drawing.Size(112, 24);
+            this.ckbBan.TabIndex = 9;
+            this.ckbBan.Text = "Quản lý bàn";
+            this.ckbBan.UseVisualStyleBackColor = true;
+            // 
+            // cboLoaiTK
+            // 
+            this.cboLoaiTK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLoaiTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLoaiTK.FormattingEnabled = true;
+            this.cboLoaiTK.Location = new System.Drawing.Point(131, 8);
+            this.cboLoaiTK.Name = "cboLoaiTK";
+            this.cboLoaiTK.Size = new System.Drawing.Size(238, 28);
+            this.cboLoaiTK.TabIndex = 8;
+            this.cboLoaiTK.SelectedIndexChanged += new System.EventHandler(this.cboLoaiTK_SelectedIndexChanged);
             // 
             // frmPhanQuyen
             // 

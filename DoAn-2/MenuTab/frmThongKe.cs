@@ -1,4 +1,5 @@
-﻿using System;
+﻿using restaurant_management.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace restaurant_management.MenuTab
         public frmThongKe()
         {
             InitializeComponent();
+        }
+        
+        void fillChart()
+        {
+            chartDoanhThu.DataSource = HoaDonDAO.Instance.GetHoaDon30Day();
+            chartDoanhThu.Series["DoanhThu"].XValueMember = "Day";
+            chartDoanhThu.Series["DoanhThu"].YValueMembers = "Sum";
+        }
+
+        private void frmThongKe_Load(object sender, EventArgs e)
+        {
+            fillChart();
         }
     }
 }

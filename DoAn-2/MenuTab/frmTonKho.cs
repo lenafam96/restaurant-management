@@ -93,6 +93,14 @@ namespace restaurant_management.MenuTab
         private void frmTonKho_Load(object sender, EventArgs e)
         {
             LoadData();
+            foreach (DataGridViewRow item in dtgvThucPham.Rows)
+            {
+                if ((int)item.Cells[3].Value == 0)
+                    for (int i = 0; i < 4; i++)
+                    {
+                        item.Cells[i].Style.BackColor = Color.Yellow;
+                    }
+            }
         }
         private void dtgvThucPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {

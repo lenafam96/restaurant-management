@@ -37,16 +37,14 @@ namespace restaurant_management.DAO
             return list;
         }
 
-        public bool CheckMonAnTrongHoaDon(int maHoaDon, int maMonAn)
+        public ChiTietHoatDon CheckMonAnTrongHoaDon(int maHoaDon, int maMonAn)
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_CheckMonAnTrongHoaDon @maHoaDon , @maMonAn", new object[] { maHoaDon, maMonAn });
-            return data.Rows.Count > 0;
+            return data.Rows.Count > 0 ? new ChiTietHoatDon(data.Rows[0]) : null;
         }
 
         public bool ThemMonAnVaoHoaDon(int maHoaDon, int maMonAn, int soLuong)
         {
-            if (soLuong < 0)
-                soLuong = 0;
             int count = DataProvider.Instance.ExecuteNonQuery("USP_InsertChiTietHoaDon @maHoaDon , @maMonAn , @soLuong ", new object[] { maHoaDon, maMonAn, soLuong });
             return count > 0;
         }
