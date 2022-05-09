@@ -30,7 +30,10 @@ namespace restaurant_management.DAO
         {
             return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListKhachHang");
         }
-
+        public DataTable GetListKhachHangCmb()
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListKhachHangCmb");
+        }
         public DataTable SearchKhachHang(string textSearch)
         {
             return DataProvider.Instance.ExecuteQuery("EXEC USP_SearchKhachHang @textSearch ", new object[] { textSearch });

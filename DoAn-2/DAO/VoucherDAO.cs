@@ -31,6 +31,11 @@ namespace restaurant_management.DAO
             return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListVoucher");
         }
 
+        public DataTable GetListVoucherCmb()
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListVoucherCmb");
+        }
+
         public bool InsertVoucher(DateTime ngayBatDau, DateTime ngayKetThuc, string moTa, int giaTri, int loai)
         {
             int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertVoucher @ngayBatDau , @ngayKetThuc , @moTa , @giaTri , @loai ", new object[] { ngayBatDau.ToString("yyyy-MM-dd"), ngayKetThuc.ToString("yyyy-MM-dd"), moTa, giaTri, loai });

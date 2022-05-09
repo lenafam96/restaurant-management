@@ -118,13 +118,13 @@ namespace restaurant_management.View
             {
                 if (Add)
                 {
-                    if (NhaCungCapDAO.Instance.InsertNhaCungCap(txtTenNhaCungCap.Text, txtDiaChi.Text, txtSDT.Text, txtEmail.Text))
+                    if (NhaCungCapDAO.Instance.InsertNhaCungCap(txtTenNhaCungCap.Text, txtDiaChi.Text, txtSDT.Text.Replace("-", string.Empty), txtEmail.Text))
                         MessageBox.Show("Thêm dữ liệu thành công!");
                     LoadData();
                 }
                 else
                 {
-                    if (NhaCungCapDAO.Instance.UpdateNhaCungCap(int.Parse(txtMaNhaCungCap.Text), txtTenNhaCungCap.Text, txtDiaChi.Text, txtSDT.Text, txtEmail.Text))
+                    if (NhaCungCapDAO.Instance.UpdateNhaCungCap(int.Parse(txtMaNhaCungCap.Text), txtTenNhaCungCap.Text, txtDiaChi.Text, txtSDT.Text.Replace("-", string.Empty), txtEmail.Text))
                         MessageBox.Show("Sửa dữ liệu thành công!");
                     LoadData();
                 }

@@ -123,13 +123,13 @@ namespace restaurant_management.MenuTab
             {
                 if (Add)
                 {
-                    if (KhachHangDAO.Instance.InsertKhachHang(txtTenKhachHang.Text,dtpkNgaySinh.Value,radNam.Checked?"Nam":"Nữ",txtSDT.Text))
+                    if (KhachHangDAO.Instance.InsertKhachHang(txtTenKhachHang.Text,dtpkNgaySinh.Value,radNam.Checked?"Nam":"Nữ", txtSDT.Text.Replace("-", string.Empty)))
                         MessageBox.Show("Thêm dữ liệu thành công!");
                     LoadData();
                 }
                 else
                 {
-                    if (KhachHangDAO.Instance.UpdateKhachHang(int.Parse(txtMaKhachHang.Text), txtTenKhachHang.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtSDT.Text))
+                    if (KhachHangDAO.Instance.UpdateKhachHang(int.Parse(txtMaKhachHang.Text), txtTenKhachHang.Text, dtpkNgaySinh.Value, radNam.Checked ? "Nam" : "Nữ", txtSDT.Text.Replace("-", string.Empty)))
                         MessageBox.Show("Sửa dữ liệu thành công!");
                     LoadData();
                 }

@@ -42,6 +42,12 @@ namespace restaurant_management.DAO
             return DataProvider.Instance.ExecuteQuery("EXEC USP_SearchNhanVien @textSearch ", new object[] { textSearch });
         }
 
+        public NhanVien GetNhanVienByID(int maNhanVien)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC USP_GetNhanVienByID " + maNhanVien);
+            return data.Rows.Count > 0 ? new NhanVien(data.Rows[0]) : null;
+        }
+
         public bool InsertNhanVien(string tenNhanVien, DateTime ngaySinh, string gioiTinh, string chucVu, string sdt, string cccd, int luong)
         {
             int count = DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertNhanVien @hoTen , @ngaySinh , @gioiTinh , @chucVu , @sdt , @cccd , @luong ", new object[] { tenNhanVien, ngaySinh.ToString("yyyy-MM-dd"), gioiTinh, chucVu, sdt, cccd, luong });

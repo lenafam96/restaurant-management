@@ -18,7 +18,7 @@ GO
 
 CREATE TABLE PhanQuyen
 (
-	role INT PRIMARY KEY, --0: admin, 1: quản kho, 2: thu ngân, 3: order
+	role INT PRIMARY KEY, --1: admin, 2: quản trị viên, 3: quản kho, 4: thu ngân, 5: order
 	nameRole NVARCHAR(20),
 	quyenBan BIT,
 	quyenNhanVien BIT,

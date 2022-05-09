@@ -59,7 +59,7 @@ namespace restaurant_management.MenuTab
             // btnSave
             // 
             this.btnSave.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSave.Location = new System.Drawing.Point(9, 323);
+            this.btnSave.Location = new System.Drawing.Point(841, 498);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(78, 26);
             this.btnSave.TabIndex = 11;
@@ -185,6 +185,7 @@ namespace restaurant_management.MenuTab
             // 
             // frmPhanQuyen
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 536);

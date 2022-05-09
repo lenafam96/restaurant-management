@@ -132,6 +132,7 @@ namespace restaurant_management.View
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnCancel.Location = new System.Drawing.Point(243, 6);
             this.btnCancel.Name = "btnCancel";
@@ -230,8 +231,10 @@ namespace restaurant_management.View
             // 
             // frmCaiDatDanhMucMon
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(936, 534);
             this.Controls.Add(this.dtgvDanhMucMon);
             this.Controls.Add(this.label1);
