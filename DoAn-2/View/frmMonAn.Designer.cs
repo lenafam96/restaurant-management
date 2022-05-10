@@ -29,6 +29,7 @@ namespace restaurant_management.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMonAn));
             this.flpMonAn = new System.Windows.Forms.FlowLayoutPanel();
             this.grbBo = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -115,6 +116,7 @@ namespace restaurant_management.View
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnThem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMonAn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmMonAn";

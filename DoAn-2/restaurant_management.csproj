@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\logo200.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
@@ -379,6 +382,7 @@
     <Content Include="IMG\Keotraicay4mua.jpg" />
     <Content Include="IMG\pepsi-lon.png" />
     <Content Include="IMG\xucxich-bit1.jpg" />
+    <Content Include="Resources\logo200.ico" />
     <None Include="Resources\12508948_1670998316473982_4851468845388207905_n.jpg" />
     <None Include="Resources\default.jpg" />
   </ItemGroup>
