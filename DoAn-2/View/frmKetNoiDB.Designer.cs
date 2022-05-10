@@ -29,6 +29,7 @@ namespace restaurant_management
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKetNoiDB));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -242,6 +243,7 @@ namespace restaurant_management
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmKetNoiDB";
             this.Text = "Kết nối cơ sở dữ liệu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmKetNoiDB_FormClosed);

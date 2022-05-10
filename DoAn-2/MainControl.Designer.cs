@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainControl));
             this.PanelMenu = new System.Windows.Forms.Panel();
             this.btnNhanVien = new FontAwesome.Sharp.IconButton();
             this.btnSetting = new FontAwesome.Sharp.IconButton();
@@ -493,6 +494,7 @@
             this.Controls.Add(this.panelshadow);
             this.Controls.Add(this.PanelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainControl";
