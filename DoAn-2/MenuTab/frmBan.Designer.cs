@@ -306,6 +306,7 @@ namespace restaurant_management.MenuTab
             this.btnChuyenBan.TabIndex = 14;
             this.btnChuyenBan.Text = "Chuyển bàn";
             this.btnChuyenBan.UseVisualStyleBackColor = true;
+            this.btnChuyenBan.Click += new System.EventHandler(this.btnChuyenBan_Click);
             // 
             // nbuSuDungDiem
             // 
