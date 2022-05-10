@@ -198,13 +198,14 @@ namespace restaurant_management.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (HoaDonDAO.Instance.DeleteHoaDon(int.Parse(txtMaHoaDon.Text)))
-                    MessageBox.Show("Xoá thành công!");
-                SetBtnEdit_Off();
-                LoadData();
-            }
+            if (!string.IsNullOrEmpty(txtMaHoaDon.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (HoaDonDAO.Instance.DeleteHoaDon(int.Parse(txtMaHoaDon.Text)))
+                        MessageBox.Show("Xoá thành công!");
+                    SetBtnEdit_Off();
+                    LoadData();
+                }
         }
 
         private void btnFirst_Click(object sender, EventArgs e)

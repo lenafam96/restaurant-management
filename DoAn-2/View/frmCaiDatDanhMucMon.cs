@@ -120,13 +120,14 @@ namespace restaurant_management.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (DanhMucMonDAO.Instance.DeleteDanhMucMon(int.Parse(txtMaDanhMucMon.Text)))
-                    MessageBox.Show("Xoá thành công!");
-                SetBtnEdit_Off();
-                LoadData();
-            }
+            if (!string.IsNullOrEmpty(txtMaDanhMucMon.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (DanhMucMonDAO.Instance.DeleteDanhMucMon(int.Parse(txtMaDanhMucMon.Text)))
+                        MessageBox.Show("Xoá thành công!");
+                    SetBtnEdit_Off();
+                    LoadData();
+                }
         }
 
         private void txtTenDanhMucMon_Leave(object sender, EventArgs e)

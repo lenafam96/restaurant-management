@@ -139,13 +139,14 @@ namespace restaurant_management.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (NhaCungCapDAO.Instance.DeleteNhaCungCap(int.Parse(txtMaNhaCungCap.Text)))
-                    MessageBox.Show("Xoá thành công!");
-                SetBtnEdit_Off();
-                LoadData();
-            }
+            if (!string.IsNullOrEmpty(txtMaNhaCungCap.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (NhaCungCapDAO.Instance.DeleteNhaCungCap(int.Parse(txtMaNhaCungCap.Text)))
+                        MessageBox.Show("Xoá thành công!");
+                    SetBtnEdit_Off();
+                    LoadData();
+                }
         }
 
         private void dtgvNhaCungCap_FilterStringChanged(object sender, EventArgs e)

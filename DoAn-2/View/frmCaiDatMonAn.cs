@@ -172,13 +172,14 @@ namespace restaurant_management.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (MonAnDAO.Instance.DeleteMonAn(int.Parse(txtMaMonAn.Text)))
-                    MessageBox.Show("Xoá thành công!");
-                SetBtnEdit_Off();
-                LoadData();
-            }
+            if (!string.IsNullOrEmpty(txtMaMonAn.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (MonAnDAO.Instance.DeleteMonAn(int.Parse(txtMaMonAn.Text)))
+                        MessageBox.Show("Xoá thành công!");
+                    SetBtnEdit_Off();
+                    LoadData();
+                }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

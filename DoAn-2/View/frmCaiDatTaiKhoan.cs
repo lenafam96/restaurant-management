@@ -167,13 +167,14 @@ namespace restaurant_management.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                bool count = AccountDAO.Instance.DeleteAccountByUserName(txtUserName.Text);
-                LoadData();
-                if (count)
-                    MessageBox.Show("Xoá tài khoản thành công!");
-            }
+            if (!string.IsNullOrEmpty(txtUserName.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bool count = AccountDAO.Instance.DeleteAccountByUserName(txtUserName.Text);
+                    LoadData();
+                    if (count)
+                        MessageBox.Show("Xoá tài khoản thành công!");
+                }
         }
 
         private void dtgvAccount_CellClick(object sender, DataGridViewCellEventArgs e)

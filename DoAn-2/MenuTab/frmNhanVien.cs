@@ -149,13 +149,14 @@ namespace restaurant_management.MenuTab
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (NhanVienDAO.Instance.DeleteNhanVien(int.Parse(txtMaNhanVien.Text)))
-                    MessageBox.Show("Xoá thành công!");
-                SetBtnEdit_Off();
-                LoadData();
-            }
+            if(!string.IsNullOrEmpty(txtMaNhanVien.Text))
+                if (MessageBox.Show("Bạn chắc chắn muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (NhanVienDAO.Instance.DeleteNhanVien(int.Parse(txtMaNhanVien.Text)))
+                        MessageBox.Show("Xoá thành công!");
+                    SetBtnEdit_Off();
+                    LoadData();
+                }
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
