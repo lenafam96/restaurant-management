@@ -86,7 +86,7 @@ namespace restaurant_management.MenuTab
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             LoadData();
-            dtpkNgaySinh.MaxDate = DateTime.Now.AddYears(-18);
+            dtpkNgaySinh.MaxDate = DateTime.Now.AddYears(-18).AddDays(-1);
         }
 
         private void dtgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
